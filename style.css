@@ -10,26 +10,26 @@
         "screen sofa bookshelf"
 }
 
-nav.main-menu {
-    background: url('images/bookshelf.png') no-repeat;
-    background-position: bottom right;
+nav.main-menu, section.screen, section.sofa-table {
+    background-repeat: no-repeat;
     background-size: contain;
-    grid-area: bookshelf;
     height: 100vh;
+}
+
+nav.main-menu {
+    background-image: url('images/bookshelf.png');
+    background-position: bottom right;
+    grid-area: bookshelf;
 }
 
 section.screen {
     background: url('images/blind.png') no-repeat;
     background-position: bottom left;
-    background-size: contain;
     grid-area: screen;
-    height: 100vh;
 }
 
 section.sofa-table {
     background: url('images/sofa.png') no-repeat;
-    background-position: bottom center;
-    background-size: contain;
     grid-area: sofa;
-    height: 100vh;
+    background-position: bottom center;
 }
