@@ -1,4 +1,35 @@
-body {
+.wrapper {
     background: url('images/background.png') no-repeat center center fixed;
     background-size: cover;
+    background-position: bottom;
+    margin: 0 auto;
+    /* max-width: 1280px; */
+    display: grid;
+    grid-template-columns: 3fr 3fr 200px;
+    grid-template-areas:
+        "screen sofa bookshelf"
+}
+
+nav.main-menu {
+    background: url('images/bookshelf.png') no-repeat;
+    background-position: bottom right;
+    background-size: contain;
+    grid-area: bookshelf;
+    height: 100vh;
+}
+
+section.screen {
+    background: url('images/blind.png') no-repeat;
+    background-position: bottom left;
+    background-size: contain;
+    grid-area: screen;
+    height: 100vh;
+}
+
+section.sofa-table {
+    background: url('images/sofa.png') no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    grid-area: sofa;
+    height: 100vh;
 }
