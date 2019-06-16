@@ -1,26 +1,70 @@
-.App {
-  text-align: center;
+.wrapper {
+  background: url('images/background.png') no-repeat center center fixed;
+  background-size: cover;
+  background-position: bottom;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 200px;
+  grid-template-areas:
+      "screen sofa bookshelf"
 }
 
-.App-logo {
+nav.main-menu, section.screen, section.sofa-table {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 100vh;
+}
+
+nav.main-menu {
+  background-image: url('images/bookshelf.png');
+  background-position: bottom right;
+  grid-area: bookshelf;
+}
+
+section.screen {
+  background-image: url('images/blind.png');
+  background-position: bottom left;
+  grid-area: screen;
+  background-size: 40vmin;
+}
+
+section.sofa-table {
+  background-image: url('images/sofa.png');
+  grid-area: sofa;
+  background-position: bottom center;
+}
+
+@media (min-width: 1281px) {
+  section.sofa-table {
+    background-size: 70vmin;
+  }
+}
+
+@media (max-width: 1280px) {
+  section.screen {
+    background-size: 35vmin;
+  }
+}
+
+@media (max-width: 720px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "screen sofa"
+  }
+  section.screen {
+    background-size: 25vmin;
+  }
+
+  nav.main-menu {
+    display: none;
+  }
+}
+
+/* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -30,4 +74,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
