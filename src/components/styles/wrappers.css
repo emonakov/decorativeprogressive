@@ -1,0 +1,22 @@
+.wrapper {
+    background: url('../../images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    background-position: bottom;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 200px;
+    grid-template-areas: "screen sofa bookshelf"
+}
+
+nav.main-menu, section.left-bar, section.center-bar {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100vh;
+}
+
+@media (max-width: 720px) {
+    .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "screen sofa"
+    }
+}

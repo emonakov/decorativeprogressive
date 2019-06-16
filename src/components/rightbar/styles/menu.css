@@ -1,0 +1,11 @@
+.main-menu {
+    background-image: url('../../../images/bookshelf.png');
+    background-position: bottom right;
+    grid-area: bookshelf;
+}
+
+@media (max-width: 720px) {
+    .main-menu {
+        display: none;
+    }
+}
