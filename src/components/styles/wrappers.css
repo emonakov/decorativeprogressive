@@ -1,11 +1,11 @@
 .wrapper {
-    background: url('../../images/background.png') no-repeat center center fixed;
-    background-size: cover;
-    background-position: bottom;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr) 200px;
-    grid-template-areas: "screen sofa bookshelf"
+    grid-template-rows: auto;
+    grid-template-areas:
+        "hero hero bookshelf"
+        "screen sofa bookshelf"
 }
 
 nav.main-menu, section.left-bar, section.center-bar {

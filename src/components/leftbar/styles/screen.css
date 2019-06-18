@@ -1,8 +1,8 @@
 section.left-bar {
-    background-image: url('../../../images/blind.png');
+    /* background-image: url('../../../images/blind.png'); */
     background-position: bottom left;
     grid-area: screen;
-    background-size: 40vmin;
+    background-size: 40vh;
 }
 
 @media (max-width: 1280px) {
