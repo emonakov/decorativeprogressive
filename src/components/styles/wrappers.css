@@ -4,7 +4,7 @@
     grid-template-columns: repeat(2, 1fr) 200px;
     grid-template-rows: auto;
     grid-template-areas:
-        "hero hero bookshelf"
+        "hero hero hero"
         "screen sofa bookshelf"
 }
 

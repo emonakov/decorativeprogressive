@@ -1,8 +1,8 @@
 section.hero {
-    background: url('../../../images/background.jpg') no-repeat center center fixed;
+    background: url('../../../images/background-2.PNG') no-repeat center center fixed;
     background-size: cover;
     background-position: center;
     grid-area: hero;
-    grid-column-end: span 3;
+    /* grid-column-end: span 3; */
     height: 100vh;
 }
