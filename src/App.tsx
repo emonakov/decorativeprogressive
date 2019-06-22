@@ -6,7 +6,7 @@ import './shared/libs/FontAwesomeLib';
 import RightBar from './components/Rightbar';
 import LeftBar from './components/Leftbar';
 import CenterBar from './components/Centerbar'
-import Hero from './components/Hero';
+import Hero from './components/HomePageHero';
 import './App.css';
 
 const Home: React.FC = () => (
