@@ -1,9 +1,8 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Frame from '../../shared/components/Frame';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { scrollTo } from '../../shared/utils/dom';
-
 import './styles/hero.css';
 
 const Hero: React.FC = () => (
