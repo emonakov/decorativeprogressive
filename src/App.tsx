@@ -1,33 +1,40 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import './shared/libs/FontAwesomeLib';
 
 import RightBar from './components/Rightbar';
 import LeftBar from './components/Leftbar';
 import CenterBar from './components/Centerbar'
-import Hero from './components/HomePageHero';
+import HomePageHero from './components/HomePageHero';
+import HeroTestPage from './components/TestPageHero';
+import LinkTo from './shared/components/LinkTo';
 import './App.css';
 
 const Home: React.FC = () => (
 	<>
-		<Hero />
+		<HomePageHero />
 		<LeftBar />
 		<CenterBar>
-			<Link to="/test">
+			<LinkTo to="/test" scrollToHero>
 				<p>TEST</p>
-			</Link>
+			</LinkTo>
 		</CenterBar>
 		<RightBar />
 	</>
 );
 
 const Test: React.FC = () => (
-	<h1>
-		<Link to="/">
-			<p>TEST</p>
-		</Link>
-	</h1>
+	<>
+		<HeroTestPage />
+		<LeftBar />
+		<CenterBar>
+			<LinkTo to="/" scrollToHero>
+				<p>TEST</p>
+			</LinkTo>
+		</CenterBar>
+		<RightBar />
+	</>
 );
 
 const App: React.FC = () => {
