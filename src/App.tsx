@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './shared/FontAwesomeLib';
+import './shared/libs/FontAwesomeLib';
 
 import MainNav from './components/rightbar/Menu';
 import Screen from './components/leftbar/Screen';
