@@ -10,23 +10,3 @@ section.hero {
     height: 100vmin;
     font-size: 1.5rem;
 }
-
-.hero__rant {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 15px;
-    background: #f5f5dc9c;
-    color: #00000099;
-    border: #d2a71375 solid 4px;
-    cursor: pointer;
-    transition: color 2s ease-out,
-        border 2s ease-out;
-}
-
-.hero__rant:hover {
-    color: #000;
-    background: #f5f5dc9c;
-    border-color: #d2a713cc;
-}
