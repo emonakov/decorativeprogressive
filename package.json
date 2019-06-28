@@ -21,7 +21,9 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["react", "@typescript-eslint"],
+    "extends": ["react-app"]
   },
   "browserslist": {
     "production": [
@@ -45,6 +47,12 @@
     "@types/react-router": "^5.0.2",
     "@types/react-router-dom": "^4.3.4",
     "@types/styled-components": "^4.1.16",
-    "jest-styled-components": "^6.3.3"
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest-styled-components": "^6.3.3",
+    "prettier": "^1.18.2"
   }
 }

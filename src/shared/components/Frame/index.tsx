@@ -17,8 +17,7 @@ const FrameWrapper = styled.div`
     color: #00000099;
     border: #d2a71375 solid 4px;
     cursor: pointer;
-    transition: color 2s ease-out,
-    border 2s ease-out;
+    transition: color 2s ease-out, border 2s ease-out;
 
     &:hover {
         color: #000;
@@ -29,7 +28,11 @@ const FrameWrapper = styled.div`
 
 const Frame: React.FC<Props> = ({ children, scrollToEl }) => {
     return (
-        <FrameWrapper onClick={() => { scrollTo(scrollToEl) }}>
+        <FrameWrapper
+            onClick={() => {
+                scrollTo(scrollToEl);
+            }}
+        >
             {children}
         </FrameWrapper>
     );

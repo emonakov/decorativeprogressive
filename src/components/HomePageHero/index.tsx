@@ -8,7 +8,7 @@ import HeroImg from '../../images/homepage-hero.png';
 
 const HomePageHero: React.FC = () => (
     <Hero background={HeroImg}>
-        <Frame scrollToEl='.left-bar'>
+        <Frame scrollToEl=".left-bar">
             <h1>Decorative Progressive</h1>
             <FontAwesomeIcon icon={['fas', 'chevron-down']} size="2x" />
         </Frame>

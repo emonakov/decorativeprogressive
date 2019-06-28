@@ -8,7 +8,7 @@ import HangingsHero from '../../images/embroidery-page.png';
 
 const HangingsPageHero: React.FC = () => (
     <Hero background={HangingsHero}>
-        <Frame scrollToEl='.left-bar'>
+        <Frame scrollToEl=".left-bar">
             <h1>Hangings on Decorative Progressive</h1>
             <FontAwesomeIcon icon={['fas', 'chevron-down']} size="2x" />
         </Frame>
