@@ -6,16 +6,13 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "@types/jest": "24.0.15",
-    "@types/node": "12.0.8",
-    "@types/react": "16.8.20",
-    "@types/react-dom": "16.8.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "typescript": "3.5.2"
+    "react-scripts": "^3.0.1",
+    "styled-components": "^4.3.2",
+    "typescript": "^3.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +36,14 @@
     ]
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-common-types": "^0.2.19",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.8",
+    "@types/react": "^16.8.20",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-fontawesome": "^1.6.4",
     "@types/react-router": "^5.0.2",
-    "@types/react-router-dom": "^4.3.4"
+    "@types/react-router-dom": "^4.3.4",
+    "@types/styled-components": "^4.1.16"
   }
 }

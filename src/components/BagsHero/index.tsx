@@ -4,15 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Hero from '../../shared/components/Hero';
 import Frame from '../../shared/components/Frame';
 
-import HeroImg from '../../images/homepage-hero.png';
+import BagsHero from '../../images/bags-page.png';
 
-const HomePageHero: React.FC = () => (
-    <Hero background={HeroImg}>
+const BagsPageHero: React.FC = () => (
+    <Hero background={BagsHero}>
         <Frame scrollToEl='.left-bar'>
-            <h1>Decorative Progressive</h1>
+            <h1>Bags on Decorative Progressive</h1>
             <FontAwesomeIcon icon={['fas', 'chevron-down']} size="2x" />
         </Frame>
     </Hero>
 );
 
-export default HomePageHero;
+export default BagsPageHero;
