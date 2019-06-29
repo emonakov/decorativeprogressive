@@ -14,6 +14,7 @@ const HeroSection = styled.section`
     justify-content: center;
     align-items: center;
     font-family: 'Julius Sans One', sans-serif;
+    text-align: center;
     grid-area: hero;
     height: 100vmin;
     font-size: 1.5rem;
@@ -21,6 +22,11 @@ const HeroSection = styled.section`
         `url('${p.background}') no-repeat center center fixed` || 'none'};
     background-size: contain;
     background-position: bottom;
+
+    @media (max-width: 1024px) {
+        background-position: top;
+        background-size: 100vmax;
+    }
 `;
 
 const Hero: React.FC<Props> = ({ children, background }) => (

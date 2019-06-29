@@ -9,17 +9,33 @@ const PageWrapper = styled.section`
     grid-template-areas:
         "hero hero hero"
         "text text text"
+        "content content content"
         "left center right";
     max-width: 1280px;
     margin: 0 auto;
+
+    @media (max-width: 768px) {
+        & {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas:
+                "hero hero"
+                "text text"
+                "content content"
+                "left center"
+                "right right";
+        }
+    }
 
     @media (max-width: 720px) {
         & {
             grid-template-columns: repeat(2, 1fr);
             grid-template-areas:
                 "hero hero"
-                "left center"
-                "left right";
+                "content content"
+                "text text"
+                "left left"
+                "center center"
+                "right right";
         }
     }
 `;
