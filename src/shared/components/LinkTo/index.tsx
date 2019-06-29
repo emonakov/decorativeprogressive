@@ -8,6 +8,7 @@ import { textColor, linkHoverColor } from '../../colors';
 interface LinkToProps {
     to: string;
     scrollToHero?: boolean;
+    exact?: boolean;
 }
 
 const StyledLink = styled(NavLink)`
@@ -21,12 +22,13 @@ const StyledLink = styled(NavLink)`
     }
 `;
 
-const LinkTo: React.FC<LinkToProps> = ({ children, to, scrollToHero }) => {
+const LinkTo: React.FC<LinkToProps> = ({ children, to, scrollToHero, exact }) => {
     const props = {
         to,
-        onClick: () => scrollToHero && scrollTo('.hero')
+        onClick: () => scrollToHero && scrollTo('.hero'),
+        exact,
     };
-
+    debugger; // eslint-disable-line
     return <StyledLink {...props}>{children}</StyledLink>;
 };
 

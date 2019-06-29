@@ -9,7 +9,7 @@ const LeftBarWrapper = styled.section`
 
 const Screen: React.FC = ({ children }) => (
     <LeftBarWrapper>
-        <CategoryLink linkTo='/' title='About Us' />
+        <CategoryLink linkTo='/' title='About Us' exact />
         {children}
     </LeftBarWrapper>
 );

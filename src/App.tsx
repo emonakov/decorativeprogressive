@@ -21,21 +21,19 @@ const HomePage: React.FC = () => (
     </>
 );
 
-const App: React.FC = () => {
-    return (
-        <AppWrapper>
-            <PageWrapper>
-                <Router>
-                    <Route path="/" exact component={HomePage} />
-                    <Route path="/bags" component={BagsHero} />
-                    <Route path="/hangings" component={HangingsHero} />
-                    <LeftBar />
-                    <CenterBar />
-                    <RightBar />
-                </Router>
-            </PageWrapper>
-        </AppWrapper>
-    );
-};
+const App: React.FC = () => (
+    <AppWrapper>
+        <PageWrapper>
+            <Router>
+                <Route path="/" exact component={HomePage} />
+                <Route path="/bags" component={BagsHero} />
+                <Route path="/hangings" component={HangingsHero} />
+                <LeftBar />
+                <CenterBar />
+                <RightBar />
+            </Router>
+        </PageWrapper>
+    </AppWrapper>
+);
 
 export default App;
