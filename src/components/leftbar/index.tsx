@@ -1,10 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import { LEFTBAR_CSS_CLASS } from './styles/constants';
-import './styles/screen.css';
+import CategoryLink from '../../shared/components/CategoryLink';
 
-const Screen: React.FC = () => (
-    <section className={LEFTBAR_CSS_CLASS}></section>
+const LeftBarWrapper = styled.section`
+    grid-area: left;
+`;
+
+const Screen: React.FC = ({ children }) => (
+    <LeftBarWrapper>
+        <CategoryLink linkTo='/' title='About Us' />
+        {children}
+    </LeftBarWrapper>
 );
 
 export default Screen;

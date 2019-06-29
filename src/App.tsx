@@ -10,7 +10,6 @@ import CenterBar from './components/Centerbar';
 import HomePageHero from './components/HomePageHero';
 import HangingsHero from './components/HangingsHero';
 import BagsHero from './components/BagsHero';
-import LinkTo from './shared/components/LinkTo';
 
 import About from './components/About';
 
@@ -29,17 +28,7 @@ const App: React.FC = () => {
                 <Route path="/bags" component={BagsHero} />
                 <Route path="/hangings" component={HangingsHero} />
                 <LeftBar />
-                <CenterBar>
-                    <LinkTo to="/" scrollToHero>
-                        <p>Home</p>
-                    </LinkTo>
-                    <LinkTo to="/bags" scrollToHero>
-                        <p>Bags</p>
-                    </LinkTo>
-                    <LinkTo to="/hangings" scrollToHero>
-                        <p>Hangings</p>
-                    </LinkTo>
-                </CenterBar>
+                <CenterBar />
                 <RightBar />
             </Router>
         </PageWrapper>

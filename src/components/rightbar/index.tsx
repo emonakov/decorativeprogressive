@@ -1,7 +1,17 @@
 import React from 'react';
-import { MAIN_MENU_CSS_CLASS } from './styles/constants';
-import './styles/menu.css';
+import styled from 'styled-components';
 
-const Menu: React.FC = () => <nav className={MAIN_MENU_CSS_CLASS}></nav>;
+import CategoryLink from '../../shared/components/CategoryLink';
+
+const RightBar = styled.section`
+    grid-area: right;
+`;
+
+const Menu: React.FC = ({ children }) => (
+    <RightBar>
+        <CategoryLink linkTo='/hangings' title='Hangings' />
+        {children}
+    </RightBar>
+);
 
 export default Menu;
