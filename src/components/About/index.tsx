@@ -7,7 +7,7 @@ Etiam porttitor pellentesque pulvinar. Quisque non libero viverra, consectetur m
 `;
 
 const HomePageText = styled.section`
-    grid-area: text;
+    grid-area: content;
     padding: 20px;
     font-size: 1.1rem;
     font-family: 'Julius Sans One', sans-serif;

@@ -8,7 +8,6 @@ const PageWrapper = styled.section`
     grid-template-rows: auto;
     grid-template-areas:
         "hero hero hero"
-        "text text text"
         "content content content"
         "left center right";
     max-width: 1280px;
@@ -19,7 +18,6 @@ const PageWrapper = styled.section`
             grid-template-columns: repeat(2, 1fr);
             grid-template-areas:
                 "hero hero"
-                "text text"
                 "content content"
                 "left center"
                 "right right";
@@ -32,7 +30,6 @@ const PageWrapper = styled.section`
             grid-template-areas:
                 "hero hero"
                 "content content"
-                "text text"
                 "left left"
                 "center center"
                 "right right";
