@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import CategoryLink from '../../shared/components/CategoryLink';
+import Niki from '../../images/niki.jpg';
 
 const RightBar = styled.section`
     grid-area: right;
@@ -9,7 +10,7 @@ const RightBar = styled.section`
 
 const Menu: React.FC = ({ children }) => (
     <RightBar>
-        <CategoryLink linkTo='/hangings' title='Hangings' />
+        <CategoryLink linkTo='/hangings' title='Hangings' img={Niki} />
         {children}
     </RightBar>
 );

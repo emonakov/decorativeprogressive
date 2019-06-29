@@ -28,7 +28,6 @@ const LinkTo: React.FC<LinkToProps> = ({ children, to, scrollToHero, exact }) =>
         onClick: () => scrollToHero && scrollTo('.hero'),
         exact,
     };
-    debugger; // eslint-disable-line
     return <StyledLink {...props}>{children}</StyledLink>;
 };
 
