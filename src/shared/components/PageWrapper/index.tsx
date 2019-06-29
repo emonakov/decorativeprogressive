@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import { wrapperBackground } from "../../colors";
 
 const PageWrapper = styled.section`
-    background: ${wrapperBackground};
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
