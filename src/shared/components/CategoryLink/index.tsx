@@ -17,13 +17,13 @@ interface CategoryLinkProps {
 }
 
 const CategoryLink: React.FC<CategoryLinkProps> = ({ children, linkTo, title, img, exact }) => (
-    <LinkTo to={linkTo} scrollToHero exact={exact}>
-        <Frame scrollToEl='.hero'>
+    <Frame>
+        <LinkTo to={linkTo} scrollToHero exact={exact}>
             <Heading>{title}</Heading>
             <Img src={img} opacity={0.8} />
             {children}
-        </Frame>
-    </LinkTo>
+        </LinkTo>
+    </Frame>
 );
 
 export default CategoryLink;
