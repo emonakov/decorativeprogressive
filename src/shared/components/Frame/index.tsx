@@ -11,7 +11,7 @@ import {
 } from '../../colors';
 
 interface Props {
-    scrollToEl: string;
+    scrollToEl?: string;
 }
 
 const FrameWrapper = styled.div`
@@ -33,7 +33,7 @@ const FrameWrapper = styled.div`
 `;
 
 const Frame: React.FC<Props> = ({ children, scrollToEl }) => (
-    <FrameWrapper onClick={() => { scrollTo(scrollToEl); }} >
+    <FrameWrapper onClick={() => { scrollToEl && scrollTo(scrollToEl); }} >
         {children}
     </FrameWrapper>
 );
