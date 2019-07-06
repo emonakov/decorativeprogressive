@@ -11,11 +11,10 @@ const Heading = styled.h1`
 interface CategoryLinkProps {
     linkTo: string;
     title: string;
-    img: string;
     exact?: boolean;
 }
 
-const CategoryLink: React.FC<CategoryLinkProps> = ({ children, linkTo, title, img, exact }) => (
+const CategoryLink: React.FC<CategoryLinkProps> = ({ children, linkTo, title, exact }) => (
     <LinkTo to={linkTo} scrollToHero exact={exact}>
         <Frame>
             <Heading>{title}</Heading>
