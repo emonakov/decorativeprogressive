@@ -7,4 +7,8 @@ export default [
         label: 'Hangings',
         link: '/hangings',
     },
+    {
+        label: 'Bags',
+        link: '/bags',
+    },
 ];

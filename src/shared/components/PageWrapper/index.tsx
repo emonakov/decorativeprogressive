@@ -9,7 +9,8 @@ const PageWrapper = styled.section`
     grid-template-areas:
         "hero hero hero"
         "content content content"
-        "left center right";
+        "left center right"
+        "menubar menubar menubar";
     max-width: 1280px;
     margin: 0 auto;
 
@@ -19,6 +20,7 @@ const PageWrapper = styled.section`
             grid-template-areas:
                 "hero hero"
                 "content content"
+                "menubar menubar"
                 "left center"
                 "right right";
         }
@@ -30,6 +32,7 @@ const PageWrapper = styled.section`
             grid-template-areas:
                 "hero hero"
                 "content content"
+                "menubar menubar"
                 "left left"
                 "center center"
                 "right right";

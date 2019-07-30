@@ -22,12 +22,15 @@ const StyledLink = styled(NavLink)`
     }
 `;
 
-const LinkTo: React.FC<LinkToProps> = ({ children, to, scrollToHero, exact }) => {
+const LinkTo: React.FC<LinkToProps> = ({
+    children, to, scrollToHero, exact,
+}) => {
     const props = {
         to,
         onClick: () => scrollToHero && scrollTo('.hero'),
         exact,
     };
+
     return <StyledLink {...props}>{children}</StyledLink>;
 };
 
