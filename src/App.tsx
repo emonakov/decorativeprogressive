@@ -16,15 +16,19 @@ import About from './components/About';
 const App: React.FC = () => (
     <PageWrapper>
         <Router>
-            <Route path='/' exact render={() => (
-                <>
-                    <HomePageHero />
-                    <About />
-                </>
-            )} />
-            <Route path='/bags' component={BagsHero} />
-            <Route path='/hangings' component={HangingsHero} />
-            <Redirect exact to='/' />
+            <Route
+                path="/"
+                exact
+                render={() => (
+                    <>
+                        <HomePageHero />
+                        <About />
+                    </>
+                )}
+            />
+            <Route path="/bags" component={BagsHero} />
+            <Route path="/hangings" component={HangingsHero} />
+            <Redirect exact to="/" />
             <LeftBar />
             <CenterBar />
             <RightBar />

@@ -5,6 +5,7 @@ import LinkTo from '../LinkTo';
 import Frame from '../Frame';
 
 const Heading = styled.h1`
+    font-family: Julius Sans One;
     text-align: center;
 `;
 
@@ -14,7 +15,9 @@ interface CategoryLinkProps {
     exact?: boolean;
 }
 
-const CategoryLink: React.FC<CategoryLinkProps> = ({ children, linkTo, title, exact }) => (
+const CategoryLink: React.FC<CategoryLinkProps> = ({
+    children, linkTo, title, exact,
+}) => (
     <LinkTo to={linkTo} scrollToHero exact={exact}>
         <Frame>
             <Heading>{title}</Heading>

@@ -1,1 +1,5 @@
 src/registerServiceWorker.js
+*.spec.ts
+*.spec.tsx
+./config/**/*
+./scripts/**/*
