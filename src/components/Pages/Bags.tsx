@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import BagsHero from '../Heroes/BagsHero';
+import { BagsPageHero } from '../Heroes';
 import ContentWrapper from '../../shared/components/ContentWrapper';
 
 import getBagsContent from '../../mocks/bags';
@@ -22,7 +22,7 @@ const BagsPage: React.FC = () => {
 
     return (!loading && (
         <>
-            <BagsHero />
+            <BagsPageHero />
             <ContentWrapper>{content}</ContentWrapper>
         </>
     )) || null;

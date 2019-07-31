@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import HangingsHero from '../Heroes/HangingsHero';
+import { HangingsPageHero } from '../Heroes';
 import ContentWrapper from '../../shared/components/ContentWrapper';
 
 import getHangingsContent from '../../mocks/hangings';
@@ -22,7 +22,7 @@ const HangingsPage: React.FC = () => {
 
     return (!loading && (
         <>
-            <HangingsHero />
+            <HangingsPageHero />
             <ContentWrapper>{content}</ContentWrapper>
         </>
     )) || null;
