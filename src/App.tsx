@@ -4,28 +4,19 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './shared/libs/FontAwesomeLib';
 
 import PageWrapper from './shared/components/PageWrapper';
-import HomePageHero from './components/Heroes/HomePageHero';
-import HangingsHero from './components/Heroes/HangingsHero';
-import BagsHero from './components/Heroes/BagsHero';
 import Menubar from './components/Menubar';
-
-import About from './components/About';
+import {
+    HomePage,
+    BagsPage,
+    HangingsPage,
+} from './components/Pages';
 
 const App: React.FC = () => (
     <PageWrapper>
         <Router>
-            <Route
-                path="/"
-                exact
-                render={() => (
-                    <>
-                        <HomePageHero />
-                        <About />
-                    </>
-                )}
-            />
-            <Route path="/bags" component={BagsHero} />
-            <Route path="/hangings" component={HangingsHero} />
+            <Route path="/" exact component={HomePage} />
+            <Route path="/bags" component={BagsPage} />
+            <Route path="/hangings" component={HangingsPage} />
             <Redirect exact to="/" />
             <Menubar />
         </Router>

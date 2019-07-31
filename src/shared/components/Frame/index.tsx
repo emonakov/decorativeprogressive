@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { scrollTo } from '../../../shared/utils/dom';
+import { scrollTo } from '../../utils/dom';
 import {
     frameBackground,
     textColor,
@@ -33,7 +33,7 @@ const FrameWrapper = styled.div`
 `;
 
 const Frame: React.FC<Props> = ({ children, scrollToEl }) => (
-    <FrameWrapper onClick={() => { scrollToEl && scrollTo(scrollToEl); }} >
+    <FrameWrapper onClick={() => (scrollToEl && scrollTo(scrollToEl))}>
         {children}
     </FrameWrapper>
 );

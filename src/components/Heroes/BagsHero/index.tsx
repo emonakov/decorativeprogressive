@@ -8,7 +8,7 @@ import BagsHero from '../../../images/bags-page.png';
 
 const BagsPageHero: React.FC = () => (
     <Hero background={BagsHero}>
-        <Frame scrollToEl='.hero + section'>
+        <Frame scrollToEl=".hero + section">
             <h1>Bags on Decorative Progressive</h1>
             <FontAwesomeIcon icon={['fas', 'chevron-down']} size="2x" />
         </Frame>
