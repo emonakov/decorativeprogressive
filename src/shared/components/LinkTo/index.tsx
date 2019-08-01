@@ -27,7 +27,7 @@ const LinkTo: React.FC<LinkToProps> = ({
 }) => {
     const props = {
         to,
-        onClick: () => scrollToHero && scrollTo('.hero'),
+        onClick: () => scrollToHero && scrollTo('', true),
         exact,
     };
 

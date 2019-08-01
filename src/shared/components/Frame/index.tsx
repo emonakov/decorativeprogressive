@@ -33,7 +33,7 @@ const FrameWrapper = styled.div`
 `;
 
 const Frame: React.FC<Props> = ({ children, scrollToEl }) => (
-    <FrameWrapper onClick={() => (scrollToEl && scrollTo(scrollToEl))}>
+    <FrameWrapper onClick={() => (scrollToEl && scrollTo(scrollToEl, false))}>
         {children}
     </FrameWrapper>
 );
