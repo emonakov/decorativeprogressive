@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import LinkTo from '../LinkTo';
-import Frame from '../Frame';
 
 const Heading = styled.h1`
     font-family: Julius Sans One;
@@ -19,10 +18,8 @@ const CategoryLink: React.FC<CategoryLinkProps> = ({
     children, linkTo, title, exact,
 }) => (
     <LinkTo to={linkTo} scrollToHero exact={exact}>
-        <Frame>
-            <Heading>{title}</Heading>
-            {children}
-        </Frame>
+        <Heading>{title}</Heading>
+        {children}
     </LinkTo>
 );
 

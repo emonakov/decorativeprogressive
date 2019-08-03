@@ -8,9 +8,9 @@ const PageWrapper = styled.section`
     grid-template-rows: auto;
     grid-template-areas:
         "hero hero hero"
+        "menubar menubar menubar"
         "content content content"
-        "left center right"
-        "menubar menubar menubar";
+        "left center right";
     max-width: 1280px;
     margin: 0 auto;
 

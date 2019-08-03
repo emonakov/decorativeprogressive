@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './shared/libs/FontAwesomeLib';
 
@@ -8,16 +8,15 @@ import Menubar from './components/Menubar';
 import {
     HomePage,
     BagsPage,
-    HangingsPage,
 } from './components/Pages';
 
 const App: React.FC = () => (
     <PageWrapper>
         <Router>
             <Route path="/" exact component={HomePage} />
-            <Route path="/bags" component={BagsPage} />
-            <Route path="/hangings" component={HangingsPage} />
-            <Redirect exact to="/" />
+            <Route path="/gallery" component={BagsPage} />
+            {/* <Route path="/hangings" component={HangingsPage} /> */}
+            {/* <Redirect exact to="/" /> */}
             <Menubar />
         </Router>
     </PageWrapper>

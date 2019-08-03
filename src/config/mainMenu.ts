@@ -1,14 +1,14 @@
 export default [
     {
-        label: 'About Us',
+        label: 'About',
         link: '/',
     },
     {
-        label: 'Hangings',
-        link: '/hangings',
+        label: 'Gallery',
+        link: '/gallery',
     },
-    {
-        label: 'Bags',
-        link: '/bags',
-    },
+    // {
+    //     label: 'Bags',
+    //     link: '/bags',
+    // },
 ];
