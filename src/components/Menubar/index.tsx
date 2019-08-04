@@ -4,7 +4,7 @@ import CategoryLink from '../../shared/components/CategoryLink';
 
 import { menuConfig } from '../../config';
 
-const InnerWrapper = styled.div`
+const InnerWrapper = styled.nav`
     display: flex;
     grid-area: menubar;
     flex-direction: column;

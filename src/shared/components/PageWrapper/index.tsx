@@ -19,8 +19,8 @@ const PageWrapper = styled.section`
             grid-template-columns: repeat(2, 1fr);
             grid-template-areas:
                 "hero hero"
-                "content content"
                 "menubar menubar"
+                "content content"
                 "left center"
                 "right right";
         }
@@ -31,8 +31,8 @@ const PageWrapper = styled.section`
             grid-template-columns: repeat(2, 1fr);
             grid-template-areas:
                 "hero hero"
-                "content content"
                 "menubar menubar"
+                "content content"
                 "left left"
                 "center center"
                 "right right";

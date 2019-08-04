@@ -65,11 +65,12 @@ const Gallery = styled.section`
 
 const P = styled.p`
     text-align: center;
-    margin: 0 0 15px;
+    margin: 0 0 ${({ theme }) => theme.paddingMd};
 `;
 
 const Img = styled(ImgUnstyled)`
     opacity: 0.9;
+    border-bottom: ${({ theme }) => `${theme.menuBorderStyle} ${theme.menuBorderColor}`};
 
     &:hover {
         opacity: 1;
