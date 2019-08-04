@@ -1,9 +1,9 @@
 import HomePageHero from './HomePageHero';
 import HangingsPageHero from './HangingsHero';
-import BagsPageHero from './BagsHero';
+import ShopPageHero from './ShopHero';
 
 export {
     HomePageHero,
     HangingsPageHero,
-    BagsPageHero,
+    ShopPageHero,
 };

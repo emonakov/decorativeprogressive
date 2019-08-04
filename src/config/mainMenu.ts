@@ -4,8 +4,8 @@ export default [
         link: '/',
     },
     {
-        label: 'Gallery',
-        link: '/gallery',
+        label: 'Shop',
+        link: '/shop',
     },
     // {
     //     label: 'Bags',
