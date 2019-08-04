@@ -8,7 +8,7 @@ const Img = styled.img`
     max-width: 100%;
     opacity: ${(p: ImgProps) => p.opacity || 1};
     transition: opacity 0.2s ease-in;
-    padding: 20px;
+    padding: ${({ theme }) => theme.contentPadding};
     box-sizing: border-box;
 
     &:hover {

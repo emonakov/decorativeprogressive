@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const ContentWrapper = styled.section`
     grid-area: content;
-    padding: 20px;
+    padding: ${({ theme }) => theme.contentPadding};
     font-size: 1.1rem;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: ${({ theme }) => theme.mainFont}, sans-serif;
     text-align: justify;
 `;
 

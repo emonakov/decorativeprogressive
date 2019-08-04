@@ -9,7 +9,7 @@ const InnerWrapper = styled.div`
     grid-area: menubar;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 0 15px;
+    padding: 0 ${({ theme }) => theme.paddingMd};
 `;
 
 const MenuBarSection = styled.section`
@@ -21,23 +21,23 @@ const MenuBarSection = styled.section`
     a {
         flex-basis: 0;
         flex-grow: 1;
-        padding: 5px;
+        padding: ${({ theme }) => theme.paddingSm};
     }
 `;
 
 const BorderTop = styled.div`
     display: block;
     width: calc(100% - 2px);
-    height: 15px;
-    border-right: 1px solid;
-    border-left: 1px solid;
-    border-bottom: 1px solid;
-    border-color: #C8BDAC;
+    height: ${({ theme }) => theme.menuBorderHeight};
+    border-right: ${({ theme }) => theme.menuBorderStyle};
+    border-left: ${({ theme }) => theme.menuBorderStyle};
+    border-bottom: ${({ theme }) => theme.menuBorderStyle};
+    border-color: ${({ theme }) => theme.menuBorderColor};
 `;
 
 const BorderBottom = styled(BorderTop)`
-    border-top: 1px solid;
-    border-color: #C8BDAC;
+    border-top: ${({ theme }) => theme.menuBorderStyle};
+    border-color: ${({ theme }) => theme.menuBorderColor};
     border-bottom: 0;
 `;
 

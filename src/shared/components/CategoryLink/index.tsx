@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import LinkTo from '../LinkTo';
 
 const Heading = styled.h1`
-    font-family: Julius Sans One;
+    font-family: ${({ theme }) => theme.mainFont};
     text-align: center;
 `;
 

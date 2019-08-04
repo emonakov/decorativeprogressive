@@ -3,3 +3,4 @@ src/registerServiceWorker.js
 *.spec.tsx
 ./config/**/*
 ./scripts/**/*
+*.d.ts

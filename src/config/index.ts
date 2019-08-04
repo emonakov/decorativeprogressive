@@ -1,7 +1,9 @@
 import menuConfig from './mainMenu';
-import CONSTANTS from './constants';
+import theme from './theme';
+import colors from './colors';
 
 export {
     menuConfig,
-    CONSTANTS,
+    theme,
+    colors,
 };

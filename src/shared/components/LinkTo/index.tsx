@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 import { scrollTo } from '../../utils/dom';
-import { textColor, linkHoverColor } from '../../colors';
 
 interface LinkToProps {
     to: string;
@@ -12,13 +11,13 @@ interface LinkToProps {
 }
 
 const StyledLink = styled(NavLink)`
-    color: ${textColor};
+    color: ${({ theme }) => theme.textColor};
     transition: color 2s ease-out;
     text-decoration: none;
     text-transform: uppercase;
 
     &.active > *, &:hover {
-        color: ${linkHoverColor};
+        color: ${({ theme }) => theme.linkHoverColor};
     }
 `;
 

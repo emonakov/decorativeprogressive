@@ -13,13 +13,12 @@ const HeroSection = styled.section`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Julius Sans One', sans-serif;
+    font-family: ${({ theme }) => theme.mainFont}, sans-serif;
     text-align: center;
     grid-area: hero;
     height: 100vmin;
     font-size: 1.5rem;
-    background: ${(p: HeroSectionProps) =>
-        `url('${p.background}') no-repeat center center fixed` || 'none'};
+    background: ${(p: HeroSectionProps) => `url('${p.background}') no-repeat center center fixed` || 'none'};
     background-size: contain;
     background-position: bottom;
 
