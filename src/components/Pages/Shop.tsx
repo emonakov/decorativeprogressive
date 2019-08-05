@@ -2,7 +2,7 @@ import React, { useReducer, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import { ShopPageHero } from '../Heroes';
 import ContentWrapper from '../../shared/components/ContentWrapper';
-import ImgUnstyled from '../../shared/components/Img';
+import Img from '../../shared/components/Img';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
 import getShopContent from '../../mocks/shop';
@@ -64,7 +64,7 @@ const P = styled.p`
     margin: 0 0 ${({ theme }) => theme.paddingMd};
 `;
 
-const Img = styled(ImgUnstyled)`
+const ProdImg = styled(Img)`
     opacity: 0.9;
     border-bottom: ${({ theme }) => `${theme.menuBorderStyle} ${theme.menuBorderColor}`};
 
@@ -94,7 +94,10 @@ const ShopPage: React.FC = ({ children }) => {
                     {items.map(({ title, id }) => (
                         <div key={id}>
                             <LinkTo to={`/shop/item/${id}`}>
-                                <Img src={`${process.env.PUBLIC_URL}/assets/products/product_${id}/main.jpg`} alt="" />
+                                <ProdImg
+                                    src={`${process.env.PUBLIC_URL}/assets/products/product_${id}/main.jpg`}
+                                    alt=""
+                                />
                                 <P>{title}</P>
                             </LinkTo>
                         </div>
