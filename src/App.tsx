@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import './shared/libs/FontAwesomeLib';
@@ -10,16 +10,18 @@ import Menubar from './components/Menubar';
 import {
     HomePage,
     ShopPage,
+    NotFoundPage,
 } from './components/Pages';
 
 const App: React.FC = () => (
     <ThemeProvider theme={theme}>
         <PageWrapper>
             <Router>
-                <Route path="/" exact component={HomePage} />
-                <Route path="/shop" component={ShopPage} />
-                {/* <Route path="/hangings" component={HangingsPage} /> */}
-                {/* <Redirect exact to="/" /> */}
+                <Switch>
+                    <Route path="/" exact component={HomePage} />
+                    <Route path="/shop" exact component={ShopPage} />
+                    <Route component={NotFoundPage} />
+                </Switch>
                 <Menubar />
             </Router>
         </PageWrapper>

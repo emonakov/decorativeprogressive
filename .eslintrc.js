@@ -16,6 +16,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     'import/no-named-as-default': 'off',
     'import/no-named-as-default-member': 'off',
+    'import/prefer-default-export': 'off',
     'import/named': 'off',
     'react/prop-types': 'off',
     indent: ['error', 4, { SwitchCase: 1 }],

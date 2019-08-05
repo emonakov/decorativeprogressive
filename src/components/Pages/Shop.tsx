@@ -3,19 +3,14 @@ import styled from 'styled-components';
 import { ShopPageHero } from '../Heroes';
 import ContentWrapper from '../../shared/components/ContentWrapper';
 import ImgUnstyled from '../../shared/components/Img';
+import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
 import getShopContent from '../../mocks/shop';
 import LinkTo from '../../shared/components/LinkTo';
 
-interface Item {
-    id: number;
-    img: string;
-    title: string;
-}
-
 interface State {
     loading: boolean;
-    items: Item[];
+    items: ItemInterface[];
     errors?: string[];
 }
 
@@ -56,6 +51,7 @@ const reducer = (state: State, action: Action) => {
 
 const Gallery = styled.section`
     display: grid;
+    grid-gap: ${({ theme }) => theme.contentPadding};
     grid-template-columns: repeat(3, 1fr);
 
     @media (max-width: 768px) {
@@ -95,10 +91,10 @@ const ShopPage: React.FC = ({ children }) => {
             <ShopPageHero />
             <ContentWrapper>
                 <Gallery>
-                    {items.map(({ title, img, id }) => (
+                    {items.map(({ title, id }) => (
                         <div key={id}>
                             <LinkTo to={`/shop/item/${id}`}>
-                                <Img src={`${process.env.PUBLIC_URL}/assets/${img}`} alt="" />
+                                <Img src={`${process.env.PUBLIC_URL}/assets/products/product_${id}/main.jpg`} alt="" />
                                 <P>{title}</P>
                             </LinkTo>
                         </div>
