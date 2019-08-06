@@ -14,7 +14,17 @@ export default async () => ({
             lobortis orci mi feugiat enim. Donec elementum posuere lorem, et efficitur neque bibendum id. Aenean
             suscipit nec ipsum sit amet pellentesque. Proin non erat eget lectus vehicula eleifend. Mauris neque dui,
             elementum quis dui eu, auctor cursus tellus. Sed at posuere lorem, vitae bibendum neque.`,
+            price: 700,
             id: 1,
+            images: {
+                main: 'main.jpg',
+                add: [
+                    'img1.jpg',
+                    'img2.jpg',
+                    'img3.jpg',
+                    'img4.jpg',
+                ],
+            },
         },
         {
             title: 'Labyrinths of mind',
@@ -29,7 +39,16 @@ export default async () => ({
             lobortis orci mi feugiat enim. Donec elementum posuere lorem, et efficitur neque bibendum id. Aenean
             suscipit nec ipsum sit amet pellentesque. Proin non erat eget lectus vehicula eleifend. Mauris neque dui,
             elementum quis dui eu, auctor cursus tellus. Sed at posuere lorem, vitae bibendum neque.`,
+            price: 500,
             id: 2,
+            images: {
+                main: 'main.jpg',
+                add: [
+                    'img1.jpg',
+                    'img2.jpg',
+                    'img3.jpg',
+                ],
+            },
         },
     ],
     errors: [],
