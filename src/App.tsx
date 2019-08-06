@@ -11,6 +11,7 @@ import {
     HomePage,
     ShopPage,
     NotFoundPage,
+    ProductPage,
 } from './components/Pages';
 
 const App: React.FC = () => (
@@ -23,12 +24,7 @@ const App: React.FC = () => (
                     <Route
                         path={['/shop/item/:id(\\d+)', '/shop/product/:id(\\d+)']}
                         strict
-                        render={({ match }) => (
-                            <h1>
-                                Product id is
-                                {match.params.id}
-                            </h1>
-                        )}
+                        component={ProductPage}
                     />
                     <Route component={NotFoundPage} />
                 </Switch>
