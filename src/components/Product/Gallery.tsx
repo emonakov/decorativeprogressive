@@ -18,6 +18,7 @@ const Gallery = styled.section`
 
 const ProdImg = styled(Img)`
     opacity: 0.9;
+    cursor: pointer;
 
     &:hover {
         opacity: 1;
