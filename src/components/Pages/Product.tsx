@@ -1,7 +1,7 @@
 import React, { useReducer, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import ContentWrapper from '../../shared/components/ContentWrapper';
-import Img from '../../shared/components/Img';
+import Gallery from '../Product/Gallery';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
 import getShopContent from '../../mocks/shop';
@@ -60,38 +60,6 @@ const ContentWrapperProduct = styled(ContentWrapper)`
     }
 `;
 
-const Gallery = styled.section`
-    display: grid;
-    grid-gap: ${({ theme }) => theme.contentPadding};
-    grid-template-columns: 150px 1fr;
-`;
-
-const ProdImg = styled(Img)`
-    opacity: 0.9;
-
-    &:hover {
-        opacity: 1;
-    }
-`;
-
-const Thumb = styled(Img)`
-    opacity: 0.9;
-    width: 140px;
-    padding: 0;
-
-    &:hover {
-        opacity: 1;
-    }
-`;
-
-const ThumbContainer = styled.ul`
-    list-style: none;
-`;
-
-const ThumbItem = styled.li`
-    padding: 10px;
-`;
-
 const ProdNav = styled.div`
     text-align: right;
 `;
@@ -124,22 +92,7 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
                 Prev | Next
             </ProdNav>
             <ContentWrapperProduct>
-                <Gallery>
-                    <ThumbContainer>
-                        {item.images.add.map(image => (
-                            <ThumbItem key={image}>
-                                <Thumb
-                                    src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/${image}`}
-                                    alt=""
-                                />
-                            </ThumbItem>
-                        ))}
-                    </ThumbContainer>
-                    <ProdImg
-                        src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/main.jpg`}
-                        alt=""
-                    />
-                </Gallery>
+                <Gallery item={item} />
                 <div>
                     <h3>{item.title}</h3>
                     <div>
