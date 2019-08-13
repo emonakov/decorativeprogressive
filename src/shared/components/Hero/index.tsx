@@ -9,7 +9,7 @@ interface HeroSectionProps {
     background?: string;
 }
 
-const HeroSection = styled.section`
+const HeroSection = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
