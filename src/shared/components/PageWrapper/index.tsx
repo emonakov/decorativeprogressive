@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const PageWrapper = styled.section`
+const PageWrapper = styled.main`
     margin: 0 auto;
     display: grid;
     grid-gap: 30px;
