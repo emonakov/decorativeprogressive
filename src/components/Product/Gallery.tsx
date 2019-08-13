@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Img from '../../shared/components/Img';
@@ -22,10 +22,13 @@ const ProdImg = styled(Img)`
     }
 `;
 
-const Thumb = styled(Img)`
+const Thumb = styled(Img)<{ active: boolean }>`
     opacity: 0.9;
     width: 140px;
     padding: 0;
+    box-sizing: border-box;
+    border: ${({ active, theme }) => (active ? `1px ${theme.darkBorderColor} solid` : '1px transparent solid')};
+    cursor: pointer;
 
     &:hover {
         opacity: 1;
@@ -40,24 +43,40 @@ const ThumbItem = styled.li`
     padding: 10px;
 `;
 
+const MAIN_IMG = 'main.jpg';
 
-const GalleryWrapper: React.FC<GalleryProps> = ({ item }) => (
-    <Gallery>
-        <ThumbContainer>
-            {item.images.add.map(image => (
-                <ThumbItem key={image}>
+
+const GalleryWrapper: React.FC<GalleryProps> = ({ item }) => {
+    const [mainImg, setMainImg] = useState(MAIN_IMG);
+
+    return (
+        <Gallery>
+            <ThumbContainer>
+                <ThumbItem key="main.jpg">
                     <Thumb
-                        src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/${image}`}
+                        src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/main.jpg`}
+                        onClick={() => setMainImg(MAIN_IMG)}
+                        active={mainImg === MAIN_IMG}
                         alt=""
                     />
                 </ThumbItem>
-            ))}
-        </ThumbContainer>
-        <ProdImg
-            src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/main.jpg`}
-            alt=""
-        />
-    </Gallery>
-);
+                {item.images.add.map(image => (
+                    <ThumbItem key={image}>
+                        <Thumb
+                            src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/${image}`}
+                            onClick={() => setMainImg(image)}
+                            active={mainImg === image}
+                            alt=""
+                        />
+                    </ThumbItem>
+                ))}
+            </ThumbContainer>
+            <ProdImg
+                src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/${mainImg}`}
+                alt=""
+            />
+        </Gallery>
+    );
+};
 
 export default GalleryWrapper;

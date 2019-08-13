@@ -14,6 +14,7 @@ const theme: DefaultTheme = {
     linkHoverColor: colors.linkHoverColor,
     frameBorderHoverColor: colors.frameBorderHoverColor,
     menuBorderColor: colors.menuBorderColor,
+    darkBorderColor: colors.darkBorder,
 };
 
 export default theme;

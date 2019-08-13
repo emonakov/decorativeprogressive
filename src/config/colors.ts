@@ -6,4 +6,5 @@ export default {
     linkHoverColor: '#000',
     frameBorderHoverColor: '#d2a713cc',
     menuBorderColor: '#c8bdac',
+    darkBorder: '#000',
 };

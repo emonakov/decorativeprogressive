@@ -14,5 +14,6 @@ declare module 'styled-components' {
         menuBorderColor: string;
         menuBorderHeight: string;
         menuBorderStyle: string;
+        darkBorderColor: string;
     }
 }
