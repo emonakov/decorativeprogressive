@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 import Img from '../../shared/components/Img';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
@@ -44,38 +46,49 @@ const ThumbItem = styled.li`
 `;
 
 const MAIN_IMG = 'main.jpg';
+const IMG_PATH = `${process.env.PUBLIC_URL}/assets/products/product_`;
 
 
 const GalleryWrapper: React.FC<GalleryProps> = ({ item }) => {
     const [mainImg, setMainImg] = useState(MAIN_IMG);
+    const [showLightbox, setShowLightbox] = useState(false);
 
     return (
-        <Gallery>
-            <ThumbContainer>
-                <ThumbItem key="main.jpg">
-                    <Thumb
-                        src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/main.jpg`}
-                        onClick={() => setMainImg(MAIN_IMG)}
-                        active={mainImg === MAIN_IMG}
-                        alt=""
-                    />
-                </ThumbItem>
-                {item.images.add.map(image => (
-                    <ThumbItem key={image}>
+        <>
+            {showLightbox && (
+                <Lightbox
+                    mainSrc={`${IMG_PATH}${item.id}/${mainImg}`}
+                    onCloseRequest={() => setShowLightbox(false)}
+                />
+            )}
+            <Gallery>
+                <ThumbContainer>
+                    <ThumbItem key="main.jpg">
                         <Thumb
-                            src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/${image}`}
-                            onClick={() => setMainImg(image)}
-                            active={mainImg === image}
+                            src={`${IMG_PATH}${item.id}/main.jpg`}
+                            onClick={() => setMainImg(MAIN_IMG)}
+                            active={mainImg === MAIN_IMG}
                             alt=""
                         />
                     </ThumbItem>
-                ))}
-            </ThumbContainer>
-            <ProdImg
-                src={`${process.env.PUBLIC_URL}/assets/products/product_${item.id}/${mainImg}`}
-                alt=""
-            />
-        </Gallery>
+                    {item.images.add.map(image => (
+                        <ThumbItem key={image}>
+                            <Thumb
+                                src={`${IMG_PATH}${item.id}/${image}`}
+                                onClick={() => setMainImg(image)}
+                                active={mainImg === image}
+                                alt=""
+                            />
+                        </ThumbItem>
+                    ))}
+                </ThumbContainer>
+                <ProdImg
+                    src={`${IMG_PATH}${item.id}/${mainImg}`}
+                    onClick={() => setShowLightbox(true)}
+                    alt=""
+                />
+            </Gallery>
+        </>
     );
 };
 
