@@ -5,6 +5,7 @@ const theme: DefaultTheme = {
     mainFont: 'Julius Sans One',
     contentPadding: '20px',
     paddingSm: '5px',
+    paddingMdOffsetSm: '10px',
     paddingMd: '15px',
     menuBorderHeight: '15px',
     menuBorderStyle: '1px solid',
@@ -15,6 +16,7 @@ const theme: DefaultTheme = {
     frameBorderHoverColor: colors.frameBorderHoverColor,
     menuBorderColor: colors.menuBorderColor,
     darkBorderColor: colors.darkBorder,
+    galleryThumbWidth: '140px',
 };
 
 export default theme;

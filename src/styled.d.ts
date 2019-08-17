@@ -5,6 +5,7 @@ declare module 'styled-components' {
         mainFont: string;
         contentPadding: string;
         paddingMd: string;
+        paddingMdOffsetSm: string;
         paddingSm: string;
         frameBackground: string;
         textColor: string;
@@ -15,5 +16,6 @@ declare module 'styled-components' {
         menuBorderHeight: string;
         menuBorderStyle: string;
         darkBorderColor: string;
+        galleryThumbWidth: string;
     }
 }

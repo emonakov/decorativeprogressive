@@ -27,7 +27,7 @@ const ProdImg = styled(Img)`
 
 const Thumb = styled(Img)<{ active: boolean }>`
     opacity: 0.9;
-    width: 140px;
+    width: ${({ theme }) => theme.galleryThumbWidth};
     padding: 0;
     box-sizing: border-box;
     border: ${({ active, theme }) => (active ? `1px ${theme.darkBorderColor} solid` : '1px transparent solid')};
@@ -43,7 +43,7 @@ const ThumbContainer = styled.ul`
 `;
 
 const ThumbItem = styled.li`
-    padding: 10px;
+    padding: ${({ theme }) => theme.paddingMdOffsetSm};
 `;
 
 const MAIN_IMG = 'main.jpg';
