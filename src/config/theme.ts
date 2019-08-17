@@ -17,6 +17,8 @@ const theme: DefaultTheme = {
     menuBorderColor: colors.menuBorderColor,
     darkBorderColor: colors.darkBorder,
     galleryThumbWidth: '140px',
+    buttonColor: colors.buttonColor,
+    ButtonActiveColor: colors.buttonActiveColor,
 };
 
 export default theme;

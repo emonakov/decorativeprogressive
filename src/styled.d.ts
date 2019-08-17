@@ -17,5 +17,7 @@ declare module 'styled-components' {
         menuBorderStyle: string;
         darkBorderColor: string;
         galleryThumbWidth: string;
+        buttonColor: string;
+        ButtonActiveColor: string;
     }
 }

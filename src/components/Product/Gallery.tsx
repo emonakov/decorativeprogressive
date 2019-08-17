@@ -6,10 +6,6 @@ import 'react-image-lightbox/style.css';
 import Img from '../../shared/components/Img';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
-interface GalleryProps {
-    item: ItemInterface;
-}
-
 const Gallery = styled.section`
     display: grid;
     grid-gap: ${({ theme }) => theme.contentPadding};
@@ -50,7 +46,7 @@ const MAIN_IMG = 'main.jpg';
 const IMG_PATH = `${process.env.PUBLIC_URL}/assets/products/product_`;
 
 
-const GalleryWrapper: React.FC<GalleryProps> = ({ item }) => {
+const GalleryWrapper: React.FC<{ item: ItemInterface }> = ({ item }) => {
     const [mainImg, setMainImg] = useState(MAIN_IMG);
     const [showLightbox, setShowLightbox] = useState(false);
 

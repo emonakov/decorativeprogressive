@@ -1,7 +1,10 @@
 import React, { useReducer, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import ContentWrapper from '../../shared/components/ContentWrapper';
+import BuyButton from '../../shared/components/Button';
+import Share from '../../shared/components/Share';
 import Gallery from '../Product/Gallery';
+import Description from '../Product/Description';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
 import getShopContent from '../../mocks/shop';
@@ -64,14 +67,6 @@ const ProdNav = styled.div`
     text-align: right;
 `;
 
-const BuyButton = styled.button`
-    background: #67916D;
-    padding: 20px 40px;
-    border-radius: 5px;
-    font-weight: bold;
-    outline: none;
-`;
-
 const ProductPage: React.FC<ProductProps> = ({ match }) => {
     const [state, dispatch] = useReducer(reducer, initialContent);
     const getShopContentCallback = useCallback(() => (getShopContent()), []);
@@ -93,19 +88,10 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
             </ProdNav>
             <ContentWrapperProduct>
                 <Gallery item={item} />
-                <div>
-                    <h3>{item.title}</h3>
-                    <div>
-                        <p>
-                            &euro;
-                            {item.price}
-                        </p>
-                        <p>{item.description}</p>
-                    </div>
-                    <div>
-                        <BuyButton type="button">BUY</BuyButton>
-                    </div>
-                </div>
+                <Description item={item}>
+                    <BuyButton>BUY</BuyButton>
+                    <Share />
+                </Description>
             </ContentWrapperProduct>
         </ContentWrapper>
     )) || null;

@@ -7,4 +7,6 @@ export default {
     frameBorderHoverColor: '#d2a713cc',
     menuBorderColor: '#c8bdac',
     darkBorder: '#000',
+    buttonColor: '#768954',
+    buttonActiveColor: '#6B7A4F',
 };
