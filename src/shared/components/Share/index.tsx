@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const ShareButtonContainer = styled.div`
     padding: 15px 0;
+    text-align: center;
 `;
 
 const Share: React.FC = () => (

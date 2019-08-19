@@ -1,7 +1,7 @@
 import React, { useReducer, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import ContentWrapper from '../../shared/components/ContentWrapper';
-import BuyButton from '../../shared/components/Button';
+import BuyButton from '../../shared/components/PayPal';
 import Share from '../../shared/components/Share';
 import Gallery from '../Product/Gallery';
 import Description from '../Product/Description';
@@ -89,7 +89,7 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
             <ContentWrapperProduct>
                 <Gallery item={item} />
                 <Description item={item}>
-                    <BuyButton>BUY</BuyButton>
+                    <BuyButton />
                     <Share />
                 </Description>
             </ContentWrapperProduct>

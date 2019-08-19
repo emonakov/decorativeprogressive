@@ -1,6 +1,5 @@
 import React from 'react';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
-// import styled from 'styled-components';
 
 const Description: React.FC<{ item: ItemInterface }> = ({ item, children }) => (
     <div>
