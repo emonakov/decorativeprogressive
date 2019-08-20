@@ -102,11 +102,11 @@
 */
 interface Amount {
     currency_code: string;
-    value: string;
+    value: number;
     breakdown?: {
         item_total: {
             currency_code: string;
-            value: string;
+            value: number;
         };
     };
 }
@@ -115,7 +115,6 @@ interface Item {
     name: string;
     unit_amount: Amount;
     quantity: number;
-    description: string;
 }
 
 interface PurchaseUnit {
@@ -149,7 +148,7 @@ interface PayPal {
 
 declare let paypal: PayPal;
 
-export default () => paypal.Buttons({
+export default (title: string, price: number) => paypal.Buttons({
     async onApprove(data, actions): Promise<string> {
         const details = await actions.order.capture();
 
@@ -160,22 +159,21 @@ export default () => paypal.Buttons({
             purchase_units: [{
                 amount: {
                     currency_code: 'GBP',
-                    value: '0.01',
+                    value: price,
                     breakdown: {
                         item_total: {
                             currency_code: 'GBP',
-                            value: '0.01',
+                            value: price,
                         },
                     },
                 },
                 items: [{
-                    name: 'blablabla',
+                    name: title,
                     unit_amount: {
                         currency_code: 'GBP',
-                        value: '0.01',
+                        value: price,
                     },
                     quantity: 1,
-                    description: 'more blablabla',
                 }],
             }],
         });

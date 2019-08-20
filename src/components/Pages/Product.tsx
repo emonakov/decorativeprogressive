@@ -89,7 +89,7 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
             <ContentWrapperProduct>
                 <Gallery item={item} />
                 <Description item={item}>
-                    <BuyButton />
+                    <BuyButton item={item} />
                     <Share />
                 </Description>
             </ContentWrapperProduct>
