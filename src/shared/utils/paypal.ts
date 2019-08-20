@@ -141,17 +141,15 @@ interface ButtonsParams {
     onApprove(data: void, actions: Actions): Promise<string>;
 }
 
-interface Window {
-    paypal: {
-        Buttons(params: ButtonsParams): {
-            render: (selector: string) => {};
-        };
+interface PayPal {
+    Buttons(params: ButtonsParams): {
+        render: (selector: string) => {};
     };
 }
 
-declare let window: Window;
+declare let paypal: PayPal;
 
-export default () => window.paypal.Buttons({
+export default () => paypal.Buttons({
     async onApprove(data, actions): Promise<string> {
         const details = await actions.order.capture();
 
