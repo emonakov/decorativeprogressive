@@ -1,7 +1,17 @@
 # TITLE
 
 # DECORATIVE PROGRESSIVE PROJECT
-  - NODE JS
-  - GRAPHQL
   - TYPESCRIPT
   - REACT
+
+#### installation:
+
+##### Development:
+
+1. `npm install`
+2. `npm start`
+
+##### Production:
+
+`npm run build`
+
