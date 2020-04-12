@@ -45,8 +45,9 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
   deploy:
-    - name: ls -a via ssh
-      uses: garygrossgarten/github-action-ssh@release
+    runs-on: ubuntu-latest
+    steps:
+    - uses: garygrossgarten/github-action-ssh@release
       with:
         command: ls -a
         host: ${{ secrets.DEPLOY_HOST }}
