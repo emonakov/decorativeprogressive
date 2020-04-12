@@ -1,10 +1,11 @@
 # build environment
 FROM node:12.16.2-alpine as build
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm ci --silent
+RUN apk update && \
+    apk add --no-cache make gcc g++ python && \
+    npm ci --silent
 COPY . ./
 RUN npm run build
 
