@@ -46,7 +46,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
   deploy:
     runs-on: ubuntu-latest
-    # needs: build
+    needs: build
     steps:
     - uses: garygrossgarten/github-action-ssh@release
       with:
