@@ -46,10 +46,14 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
   deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
     - uses: garygrossgarten/github-action-ssh@release
       with:
-        command: ls -a
+        command: docker container rm -f frontend
+        command: docker image rm  emonakov/decorativeprogressive-frontend
+        command: docker pull emonakov/decorativeprogressive-frontend
+        command: docker run -d --name frontend -p80:80 --restart unless-stopped emonakov/decorativeprogressive:frontend
         host: ${{ secrets.DEPLOY_HOST }}
         username: ec2-user
         privateKey: ${{ secrets.DEPLOY_KEY}}
