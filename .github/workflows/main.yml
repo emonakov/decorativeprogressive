@@ -50,10 +50,11 @@ jobs:
     steps:
     - uses: garygrossgarten/github-action-ssh@release
       with:
-        command: docker container rm -f frontend
-        command: docker image rm  emonakov/decorativeprogressive-frontend
-        command: docker pull emonakov/decorativeprogressive-frontend
-        command: docker run -d --name frontend -p80:80 --restart unless-stopped emonakov/decorativeprogressive:frontend
+        command: |
+          docker container rm -f frontend
+          docker image rm  emonakov/decorativeprogressive-frontend
+          docker pull emonakov/decorativeprogressive-frontend
+          docker run -d --name frontend -p80:80 --restart unless-stopped emonakov/decorativeprogressive:frontend
         host: ${{ secrets.DEPLOY_HOST }}
         username: ec2-user
         privateKey: ${{ secrets.DEPLOY_KEY}}
