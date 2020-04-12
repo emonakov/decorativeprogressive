@@ -1,7 +1,9 @@
 .git
 .vscode/
 build/
-node_modules/*
+node_modules/
 Dockerfile
 .gitignore
 README.md
+docker-compose.yml
+Dockerfile
