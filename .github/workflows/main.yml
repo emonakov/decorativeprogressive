@@ -52,8 +52,8 @@ jobs:
       with:
         command: |
           docker container rm -f frontend && \
-          docker image rm  emonakov/decorativeprogressive-frontend && \
-          docker pull emonakov/decorativeprogressive-frontend && \
+          docker image rm  emonakov/decorativeprogressive:frontend && \
+          docker pull emonakov/decorativeprogressive:frontend && \
           docker run -d --name frontend -p80:80 --restart unless-stopped emonakov/decorativeprogressive:frontend
         host: ${{ secrets.DEPLOY_HOST }}
         username: ec2-user
