@@ -93,7 +93,7 @@ const ShopPage: React.FC = ({ children }) => {
                 <Gallery>
                     {items.map(({ title, id, images }) => (
                         <div key={id}>
-                            <LinkTo to={`/shop/item/${id}`}>
+                            <LinkTo to={`/product/item/${id}`}>
                                 <ProdImg
                                     src={`${process.env.PUBLIC_URL}/assets/products/product_${id}/${images.main}`}
                                     alt=""

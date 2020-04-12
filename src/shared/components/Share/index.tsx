@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 
 const ShareButtonContainer = styled.div`
@@ -15,11 +15,15 @@ interface AddThis {
 declare let addthis: AddThis;
 
 const Share: React.FC = () => {
-    useEffect(() => {
-        if (!addthis) {
-            window.addEventListener('load', () => addthis.layers.refresh());
-        } else {
-            addthis.layers.refresh();
+    useLayoutEffect(() => {
+        try {
+            if (!addthis) {
+                window.addEventListener('load', () => addthis.layers.refresh());
+            } else {
+                addthis.layers.refresh();
+            }
+        } catch {
+            console.error('AddThis is blocked');
         }
     });
 

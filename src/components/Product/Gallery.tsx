@@ -68,7 +68,7 @@ const GalleryWrapper: React.FC<{ item: ItemInterface }> = ({ item }) => {
                             alt=""
                         />
                     </ThumbItem>
-                    {item.images.add.map(image => (
+                    {item.images.add.map((image) => (
                         <ThumbItem key={image}>
                             <Thumb
                                 src={`${IMG_PATH}${item.id}/${image}`}

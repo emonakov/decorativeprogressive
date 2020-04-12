@@ -20,9 +20,9 @@ const App: React.FC = () => (
             <Router>
                 <Switch>
                     <Route path="/" exact component={HomePage} />
-                    <Route path="/shop" exact component={ShopPage} />
+                    <Route path="/product" exact component={ShopPage} />
                     <Route
-                        path={['/shop/item/:id(\\d+)', '/shop/product/:id(\\d+)']}
+                        path={['/product/item/:id(\\d+)', '/product/product/:id(\\d+)']}
                         strict
                         component={ProductPage}
                     />
