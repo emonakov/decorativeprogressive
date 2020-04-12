@@ -27,6 +27,7 @@ module.exports = {
     // Indent props with 4 spaces
     'react/jsx-indent-props': ['error', 4],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'import/extensions': 'off',
   },
   settings: {
     react: {
