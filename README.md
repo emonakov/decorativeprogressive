@@ -1,3 +1,5 @@
+![CI](https://github.com/emonakov/decorativeprogressive/workflows/CI/badge.svg?branch=master)
+
 # TITLE
 
 # DECORATIVE PROGRESSIVE PROJECT
