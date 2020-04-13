@@ -42,36 +42,33 @@ const ThumbItem = styled.li`
     padding: ${({ theme }) => theme.paddingMdOffsetSm};
 `;
 
-const MAIN_IMG = 'main.jpg';
-const IMG_PATH = `${process.env.PUBLIC_URL}/assets/products/product_`;
-
-
 const GalleryWrapper: React.FC<{ item: ItemInterface }> = ({ item }) => {
-    const [mainImg, setMainImg] = useState(MAIN_IMG);
+    const [mainImg, setMainImg] = useState(item.images.main);
     const [showLightbox, setShowLightbox] = useState(false);
+    const mainImageUrl = `${item.productAssets}${item.images.main}`;
 
     return (
         <>
             {showLightbox && (
                 <Lightbox
-                    mainSrc={`${IMG_PATH}${item.id}/${mainImg}`}
+                    mainSrc={`${item.productAssets}${mainImg}`}
                     onCloseRequest={() => setShowLightbox(false)}
                 />
             )}
             <Gallery>
                 <ThumbContainer>
-                    <ThumbItem key="main.jpg">
+                    <ThumbItem key={mainImg}>
                         <Thumb
-                            src={`${IMG_PATH}${item.id}/main.jpg`}
-                            onClick={() => setMainImg(MAIN_IMG)}
-                            active={mainImg === MAIN_IMG}
+                            src={`${mainImageUrl}`}
+                            onClick={() => setMainImg(item.images.main)}
+                            active={mainImg === item.images.main}
                             alt=""
                         />
                     </ThumbItem>
                     {item.images.add.map((image) => (
                         <ThumbItem key={image}>
                             <Thumb
-                                src={`${IMG_PATH}${item.id}/${image}`}
+                                src={`${item.productAssets}${image}`}
                                 onClick={() => setMainImg(image)}
                                 active={mainImg === image}
                                 alt=""
@@ -80,7 +77,7 @@ const GalleryWrapper: React.FC<{ item: ItemInterface }> = ({ item }) => {
                     ))}
                 </ThumbContainer>
                 <ProdImg
-                    src={`${IMG_PATH}${item.id}/${mainImg}`}
+                    src={`${item.productAssets}${mainImg}`}
                     onClick={() => setShowLightbox(true)}
                     alt=""
                 />

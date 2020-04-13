@@ -16,6 +16,7 @@ export default async () => ({
             elementum quis dui eu, auctor cursus tellus. Sed at posuere lorem, vitae bibendum neque.`,
             price: 700,
             id: 1,
+            productAssets: 'https://decorativeprogressive.s3.eu-west-2.amazonaws.com/assets/product_1/',
             images: {
                 main: 'main.jpg',
                 add: [
@@ -41,6 +42,7 @@ export default async () => ({
             elementum quis dui eu, auctor cursus tellus. Sed at posuere lorem, vitae bibendum neque.`,
             price: 500,
             id: 2,
+            productAssets: 'https://decorativeprogressive.s3.eu-west-2.amazonaws.com/assets/product_2/',
             images: {
                 main: 'main.jpg',
                 add: [
@@ -65,6 +67,7 @@ export default async () => ({
             elementum quis dui eu, auctor cursus tellus. Sed at posuere lorem, vitae bibendum neque.`,
             price: 200,
             id: 3,
+            productAssets: 'https://decorativeprogressive.s3.eu-west-2.amazonaws.com/assets/product_3/',
             images: {
                 main: 'main.jpg',
                 add: [

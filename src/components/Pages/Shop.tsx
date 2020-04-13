@@ -91,11 +91,16 @@ const ShopPage: React.FC = ({ children }) => {
             <ShopPageHero />
             <ContentWrapper>
                 <Gallery>
-                    {items.map(({ title, id, images }) => (
+                    {items.map(({
+                        title,
+                        id,
+                        images,
+                        productAssets,
+                    }) => (
                         <div key={id}>
                             <LinkTo to={`/product/item/${id}`}>
                                 <ProdImg
-                                    src={`${process.env.PUBLIC_URL}/assets/products/product_${id}/${images.main}`}
+                                    src={`${productAssets}${images.main}`}
                                     alt=""
                                 />
                                 <P>{title}</P>
