@@ -31,9 +31,6 @@ const MenuBarSection = styled.section`
 `;
 
 const Frame = styled(FrameUnstyled)`
-    border-color: transparent;
-    border-radius: 20px;
-    background-color: #FFBD599c;
     font-size: 1.7em;
     width: 200px;
     height: 80px;
