@@ -17,7 +17,7 @@ interface CategoryLinkProps {
 const CategoryLink: React.FC<CategoryLinkProps> = ({
     children, linkTo, title, exact,
 }) => (
-    <LinkTo to={linkTo} scrollToHero exact={exact}>
+    <LinkTo to={linkTo} exact={exact}>
         <Heading>{title}</Heading>
         {children}
     </LinkTo>

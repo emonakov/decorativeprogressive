@@ -8,7 +8,7 @@ import NotFoundHero from '../../images/hangings-hero.png';
 
 const NotFoundPageHero: React.FC = () => (
     <Hero background={NotFoundHero}>
-        <Frame scrollToEl="nav">
+        <Frame scrollToEl="main">
             <h1>
                 Page not found
                 <span role="img" aria-label="puzzled">🤨</span>

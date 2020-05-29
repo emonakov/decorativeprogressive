@@ -28,8 +28,8 @@ const HeroSection = styled.header`
     }
 `;
 
-const Hero: React.FC<Props> = ({ children, background }) => (
-    <HeroSection background={background} className="hero">
+const Hero: React.FC<Props> = ({ children, background, ...props }) => (
+    <HeroSection background={background} className="hero" {...props}>
         {children}
     </HeroSection>
 );

@@ -5,6 +5,7 @@ import ContentWrapper from '../../shared/components/ContentWrapper';
 import Gallery from '../Product/Gallery';
 import Description from '../Product/Description';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
+import { HomePageHero } from '../Heroes';
 
 import getShopContent from '../../mocks/shop';
 
@@ -20,7 +21,7 @@ interface State {
 
 interface Action {
     type: string;
-    payload?: object;
+    payload?: Record<string, unknown>;
 }
 
 const initialContent = {
@@ -62,9 +63,9 @@ const ContentWrapperProduct = styled(ContentWrapper)`
     }
 `;
 
-const ProdNav = styled.div`
-    text-align: right;
-`;
+// const ProdNav = styled.div`
+//     text-align: right;
+// `;
 
 const ProductPage: React.FC<ProductProps> = ({ match }) => {
     const [state, dispatch] = useReducer(reducer, initialContent);
@@ -81,17 +82,22 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
     const { loading, item } = state;
 
     return (!loading && item && (
-        <ContentWrapper>
-            <ProdNav>
+        <>
+            <HomePageHero>
+                <h1>{item.title}</h1>
+            </HomePageHero>
+            <ContentWrapper>
+                {/* <ProdNav>
                 Prev | Next
-            </ProdNav>
-            <ContentWrapperProduct>
-                <Gallery item={item} />
-                <Description item={item} />
-                {/* <BuyButton item={item} />
+            </ProdNav> */}
+                <ContentWrapperProduct>
+                    <Gallery item={item} />
+                    <Description item={item} />
+                    {/* <BuyButton item={item} />
                 </Description> */}
-            </ContentWrapperProduct>
-        </ContentWrapper>
+                </ContentWrapperProduct>
+            </ContentWrapper>
+        </>
     )) || null;
 };
 

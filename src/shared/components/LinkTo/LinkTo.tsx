@@ -2,11 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-import { scrollTo } from '../../utils/dom';
-
 interface LinkToProps {
     to: string;
-    scrollToHero?: boolean;
     exact?: boolean;
 }
 
@@ -22,11 +19,10 @@ const StyledLink = styled(NavLink)`
 `;
 
 const LinkTo: React.FC<LinkToProps> = ({
-    children, to, scrollToHero, exact,
+    children, to, exact,
 }) => {
     const props = {
         to,
-        onClick: () => scrollToHero && scrollTo('', true),
         exact,
     };
 

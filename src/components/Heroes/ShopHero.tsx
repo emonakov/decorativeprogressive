@@ -8,7 +8,7 @@ import ShopHero from '../../images/bags-page.png';
 
 const ShopPageHero: React.FC = () => (
     <Hero background={ShopHero}>
-        <Frame scrollToEl="nav">
+        <Frame scrollToEl="main">
             <h1>Shop on Decorative Progressive</h1>
             <FontAwesomeIcon icon={['fas', 'chevron-down']} size="2x" />
         </Frame>

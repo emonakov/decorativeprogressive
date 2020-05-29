@@ -20,6 +20,7 @@ const App: React.FC = () => (
     <ThemeProvider theme={theme}>
         <PageWrapper>
             <Router>
+                <Menubar />
                 <Suspense fallback={<Fallback />}>
                     <Switch>
                         <Route path="/" exact component={HomePage} />
@@ -33,7 +34,6 @@ const App: React.FC = () => (
                         <Route component={NotFoundPage} />
                     </Switch>
                 </Suspense>
-                <Menubar />
             </Router>
         </PageWrapper>
     </ThemeProvider>

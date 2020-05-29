@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import FrameUnstyled from '../../shared/components/Frame';
 import CategoryLink from '../../shared/components/CategoryLink';
 
 import { menuConfig } from '../../config';
@@ -10,6 +12,9 @@ const InnerWrapper = styled.nav`
     flex-direction: column;
     box-sizing: border-box;
     padding: 0 ${({ theme }) => theme.paddingMd};
+    position: absolute;
+    width: 100%;
+    top: 30px;
 `;
 
 const MenuBarSection = styled.section`
@@ -25,31 +30,24 @@ const MenuBarSection = styled.section`
     }
 `;
 
-const BorderTop = styled.div`
-    display: block;
-    width: calc(100% - 2px);
-    height: ${({ theme }) => theme.menuBorderHeight};
-    border-right: ${({ theme }) => theme.menuBorderStyle};
-    border-left: ${({ theme }) => theme.menuBorderStyle};
-    border-bottom: ${({ theme }) => theme.menuBorderStyle};
-    border-color: ${({ theme }) => theme.menuBorderColor};
-`;
-
-const BorderBottom = styled(BorderTop)`
-    border-top: ${({ theme }) => theme.menuBorderStyle};
-    border-color: ${({ theme }) => theme.menuBorderColor};
-    border-bottom: 0;
+const Frame = styled(FrameUnstyled)`
+    border-color: transparent;
+    border-radius: 20px;
+    background-color: #FFBD599c;
+    font-size: 1.7em;
+    width: 200px;
+    height: 80px;
 `;
 
 const Menubar: React.FC = () => (
     <InnerWrapper>
-        <BorderTop />
         <MenuBarSection>
             {menuConfig.map(({ label, link }) => (
-                <CategoryLink key={link} linkTo={link} title={label} exact />
+                <Frame key={label}>
+                    <CategoryLink linkTo={link} title={label} exact />
+                </Frame>
             ))}
         </MenuBarSection>
-        <BorderBottom />
     </InnerWrapper>
 );
 
