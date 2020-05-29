@@ -16,7 +16,7 @@ interface State {
 
 interface Action {
     type: string;
-    payload?: object;
+    payload?: Record<string, unknown>;
 }
 
 const initialContent = {

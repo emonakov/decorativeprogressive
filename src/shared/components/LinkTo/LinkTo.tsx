@@ -30,7 +30,14 @@ const LinkTo: React.FC<LinkToProps> = ({
         exact,
     };
 
-    return <StyledLink {...props}>{children}</StyledLink>;
+    return (
+        <StyledLink
+            {...props}
+            isActive={(_, location) => new RegExp(to).test(location.pathname)}
+        >
+            {children}
+        </StyledLink>
+    );
 };
 
 export default LinkTo;
