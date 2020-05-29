@@ -73,7 +73,7 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
         dispatch({ type: 'CONTENT_REQUEST' });
         (async () => {
             const data = await getShopContentCallback();
-            const product = data.items.find(item => item.id === Number(match.params.id));
+            const product = data.items.find((item) => item.id === Number(match.params.id));
             dispatch({ type: 'CONTENT_SUCCESS', payload: { item: product } });
         })();
     }, [dispatch, getShopContentCallback, match]);

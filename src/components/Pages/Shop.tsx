@@ -98,7 +98,7 @@ const ShopPage: React.FC = ({ children }) => {
                         productAssets,
                     }) => (
                         <div key={id}>
-                            <LinkTo to={`/product/item/${id}`}>
+                            <LinkTo to={`/shop/item/${id}`}>
                                 <ProdImg
                                     src={`${productAssets}${images.main}`}
                                     alt=""
