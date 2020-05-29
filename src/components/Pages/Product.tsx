@@ -1,8 +1,7 @@
 import React, { useReducer, useCallback, useEffect } from 'react';
 import styled from 'styled-components';
 import ContentWrapper from '../../shared/components/ContentWrapper';
-import BuyButton from '../../shared/components/PayPal';
-import Share from '../../shared/components/Share';
+// import BuyButton from '../../shared/components/PayPal';
 import Gallery from '../Product/Gallery';
 import Description from '../Product/Description';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
@@ -88,10 +87,9 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
             </ProdNav>
             <ContentWrapperProduct>
                 <Gallery item={item} />
-                <Description item={item}>
-                    <BuyButton item={item} />
-                    <Share />
-                </Description>
+                <Description item={item} />
+                {/* <BuyButton item={item} />
+                </Description> */}
             </ContentWrapperProduct>
         </ContentWrapper>
     )) || null;

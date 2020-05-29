@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
@@ -7,27 +7,32 @@ import { theme } from './config';
 
 import PageWrapper from './shared/components/PageWrapper';
 import Menubar from './components/Menubar';
-import {
-    HomePage,
-    ShopPage,
-    NotFoundPage,
-    ProductPage,
-} from './components/Pages';
+
+import Fallback from './components/Fallback';
+
+const HomePage = lazy(() => import('./components/Pages/Home'));
+const ShopPage = lazy(() => import('./components/Pages/Shop'));
+const NotFoundPage = lazy(() => import('./components/Pages/NotFound'));
+const ProductPage = lazy(() => import('./components/Pages/Product'));
+const AboutPage = lazy(() => import('./components/Pages/About'));
 
 const App: React.FC = () => (
     <ThemeProvider theme={theme}>
         <PageWrapper>
             <Router>
-                <Switch>
-                    <Route path="/" exact component={HomePage} />
-                    <Route path="/product" exact component={ShopPage} />
-                    <Route
-                        path={['/product/item/:id(\\d+)', '/product/product/:id(\\d+)']}
-                        strict
-                        component={ProductPage}
-                    />
-                    <Route component={NotFoundPage} />
-                </Switch>
+                <Suspense fallback={<Fallback />}>
+                    <Switch>
+                        <Route path="/" exact component={HomePage} />
+                        <Route path="/about" exact component={AboutPage} />
+                        <Route path="/shop" exact component={ShopPage} />
+                        <Route
+                            path={'/product/item/:id(\\d+)'}
+                            strict
+                            component={ProductPage}
+                        />
+                        <Route component={NotFoundPage} />
+                    </Switch>
+                </Suspense>
                 <Menubar />
             </Router>
         </PageWrapper>
