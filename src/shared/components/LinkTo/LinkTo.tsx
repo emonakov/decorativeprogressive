@@ -29,7 +29,7 @@ const LinkTo: React.FC<LinkToProps> = ({
     return (
         <StyledLink
             {...props}
-            isActive={(_, location) => new RegExp(to).test(location.pathname)}
+            isActive={(_, location) => RegExp(to).test(location.pathname)}
         >
             {children}
         </StyledLink>
