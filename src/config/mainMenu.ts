@@ -1,7 +1,7 @@
 export default [
     {
-        label: 'About',
-        link: '/about',
+        label: 'Maison',
+        link: '/',
     },
     {
         label: 'Shop',

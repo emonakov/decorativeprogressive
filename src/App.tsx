@@ -14,7 +14,6 @@ const HomePage = lazy(() => import('./components/Pages/Home'));
 const ShopPage = lazy(() => import('./components/Pages/Shop'));
 const NotFoundPage = lazy(() => import('./components/Pages/NotFound'));
 const ProductPage = lazy(() => import('./components/Pages/Product'));
-const AboutPage = lazy(() => import('./components/Pages/About'));
 
 const App: React.FC = () => (
     <ThemeProvider theme={theme}>
@@ -24,7 +23,6 @@ const App: React.FC = () => (
                 <Suspense fallback={<Fallback />}>
                     <Switch>
                         <Route path="/" exact component={HomePage} />
-                        <Route path="/about" exact component={AboutPage} />
                         <Route path="/shop" exact component={ShopPage} />
                         <Route
                             path={'/shop/item/:id(\\d+)'}

@@ -4,8 +4,11 @@ import Loading from 'react-loading';
 
 const FallbackContainer = styled.section`
     position: absolute;
-    left: 50%;
-    top: 50%;
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Fallback: React.FC = () => {
