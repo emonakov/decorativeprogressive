@@ -19,6 +19,7 @@ const theme: DefaultTheme = {
     galleryThumbWidth: '140px',
     buttonColor: colors.buttonColor,
     ButtonActiveColor: colors.buttonActiveColor,
+    wrapperBackground: colors.wrapperBackground,
 };
 
 export default theme;

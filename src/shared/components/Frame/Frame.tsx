@@ -18,6 +18,7 @@ const FrameWrapper = styled.div`
     border: ${({ theme }) => theme.frameBorderColor} solid 4px;
     cursor: pointer;
     transition: color 2s ease-out, border 2s ease-out;
+    z-index: 1;
 
     &:hover {
         color: ${({ theme }) => theme.linkHoverColor};

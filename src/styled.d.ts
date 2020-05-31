@@ -19,5 +19,6 @@ declare module 'styled-components' {
         galleryThumbWidth: string;
         buttonColor: string;
         ButtonActiveColor: string;
+        wrapperBackground: string;
     }
 }
