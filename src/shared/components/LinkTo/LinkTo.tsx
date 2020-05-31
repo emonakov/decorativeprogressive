@@ -19,7 +19,7 @@ const StyledLink = styled(NavLink)`
 `;
 
 const LinkTo: React.FC<LinkToProps> = ({
-    children, to, exact,
+    children, to, exact, ...rest
 }) => {
     const props = {
         to,
@@ -29,6 +29,7 @@ const LinkTo: React.FC<LinkToProps> = ({
     return (
         <StyledLink
             {...props}
+            {...rest}
             isActive={(_, location) => {
                 if (location.pathname !== '/' && to === '/') {
                     return false;

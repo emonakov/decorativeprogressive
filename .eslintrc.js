@@ -14,6 +14,7 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
     'import/no-named-as-default': 'off',
     'import/no-named-as-default-member': 'off',
     'import/prefer-default-export': 'off',

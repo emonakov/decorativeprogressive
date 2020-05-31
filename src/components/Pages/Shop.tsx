@@ -1,12 +1,21 @@
-import React, { useReducer, useCallback, useEffect } from 'react';
+import React, {
+    useReducer,
+    useCallback,
+    useEffect,
+    useState,
+} from 'react';
 import styled from 'styled-components';
+import { useDebounce } from 'react-use';
+import ReactPlaceholder from 'react-placeholder';
+import 'react-placeholder/lib/reactPlaceholder.css';
+
 import { ShopPageHero } from '../Heroes';
 import ContentWrapper from '../../shared/components/ContentWrapper';
 import Img from '../../shared/components/Img';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
 import getShopContent from '../../mocks/shop';
-import LinkTo from '../../shared/components/LinkTo';
+import LinkToUnstyled from '../../shared/components/LinkTo';
 
 interface State {
     loading: boolean;
@@ -21,6 +30,7 @@ interface Action {
 
 const initialContent = {
     loading: false,
+    images: {},
     items: [],
     errors: [],
 };
@@ -73,7 +83,15 @@ const ProdImg = styled(Img)`
     }
 `;
 
+const LinkTo = styled(LinkToUnstyled)`
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+`;
+
 const ShopPage: React.FC = ({ children }) => {
+    const [ready, setReady] = useState<{ [id: string]: boolean }>({ _: false });
     const [state, dispatch] = useReducer(reducer, initialContent);
     const getShopContentCallback = useCallback(() => (getShopContent()), []);
     useEffect(() => {
@@ -83,6 +101,10 @@ const ShopPage: React.FC = ({ children }) => {
             dispatch({ type: 'CONTENT_SUCCESS', payload: data });
         })();
     }, [dispatch, getShopContentCallback]);
+
+    useDebounce(() => {
+        console.log('blabla');
+    }, 1000, []);
 
     const { loading, items } = state;
 
@@ -99,10 +121,29 @@ const ShopPage: React.FC = ({ children }) => {
                     }) => (
                         <div key={id}>
                             <LinkTo to={`/shop/item/${id}`}>
-                                <ProdImg
-                                    src={`${productAssets}${images.main}`}
-                                    alt=""
-                                />
+                                {!ready[id]
+                                && (
+                                    <img
+                                        src={`${productAssets}${images.main}`}
+                                        alt=""
+                                        onLoad={() => setReady({ ...ready, [id]: true })}
+                                        width="0"
+                                        height="0"
+                                    />
+                                )}
+                                <ReactPlaceholder
+                                    ready={ready[id]}
+                                    type="rect"
+                                    showLoadingAnimation
+                                    style={{ width: 300, height: 500 }}
+                                >
+                                    <ProdImg
+                                        src={`${productAssets}${images.main}`}
+                                        alt=""
+                                        width="300"
+                                        height="500"
+                                    />
+                                </ReactPlaceholder>
                                 <P>{title}</P>
                             </LinkTo>
                         </div>

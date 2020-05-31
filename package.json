@@ -12,6 +12,7 @@
     "react-helmet": "latest",
     "react-image-lightbox": "latest",
     "react-loading": "latest",
+    "react-placeholder": "^4.0.1",
     "react-router": "latest",
     "react-router-dom": "latest",
     "react-scripts": "latest",
