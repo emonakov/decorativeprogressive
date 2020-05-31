@@ -19,8 +19,8 @@ const App: React.FC = () => (
     <ThemeProvider theme={theme}>
         <PageWrapper>
             <Router>
-                <Menubar />
                 <Suspense fallback={<Fallback />}>
+                    <Menubar />
                     <Switch>
                         <Route path="/" exact component={HomePage} />
                         <Route path="/shop" exact component={ShopPage} />
