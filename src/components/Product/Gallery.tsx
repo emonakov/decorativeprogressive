@@ -33,7 +33,7 @@ const GalleryWrapper: React.FC<{ item: ItemInterface }> = ({ item }) => {
         <>
             {showLightbox && (
                 <Lightbox
-                    mainSrc={getCloudinaryUrl(`${item.productAssets}${mainImg}`)}
+                    mainSrc={getCloudinaryUrl(`${item.productAssets}${mainImg}`, { height: '864', crop: 'scale' })}
                     enableZoom={false}
                     onCloseRequest={() => setShowLightbox(false)}
                 />
