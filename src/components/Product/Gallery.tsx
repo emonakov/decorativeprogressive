@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-// import Lightbox from 'react-image-lightbox';
+import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 
 import Thumbs from './Thumbs';
 import Img from '../../shared/components/CloudinaryImage';
+import { getCloudinaryUrl } from '../../shared/utils/cloudinary';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
 const Gallery = styled.section`
@@ -25,17 +26,18 @@ const ProdImg = styled(Img)`
 
 const GalleryWrapper: React.FC<{ item: ItemInterface }> = ({ item }) => {
     const [mainImg, setMainImg] = useState(item.images.main);
-    // const [showLightbox, setShowLightbox] = useState(false);
+    const [showLightbox, setShowLightbox] = useState(false);
     const mainImageUrl = `${item.productAssets}${item.images.main}`;
 
     return (
         <>
-            {/* {showLightbox && (
+            {showLightbox && (
                 <Lightbox
-                    mainSrc={`${item.productAssets}${mainImg}`}
+                    mainSrc={getCloudinaryUrl(`${item.productAssets}${mainImg}`)}
+                    enableZoom={false}
                     onCloseRequest={() => setShowLightbox(false)}
                 />
-            )} */}
+            )}
             <Gallery>
                 <Thumbs
                     item={item}
@@ -45,7 +47,7 @@ const GalleryWrapper: React.FC<{ item: ItemInterface }> = ({ item }) => {
                 />
                 <ProdImg
                     publicId={`${item.productAssets}${mainImg}`}
-                    // onClick={() => setShowLightbox(true)}
+                    onClick={() => setShowLightbox(true)}
                     width="300"
                     crop="scale"
                 />
