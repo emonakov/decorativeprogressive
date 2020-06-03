@@ -8,7 +8,7 @@ import { theme } from './config';
 
 import PageWrapper from './shared/components/PageWrapper';
 import Menubar from './components/Menubar';
-
+import ScrollToTop from './shared/components/ScrollToTop';
 import Fallback from './components/Fallback';
 
 const HomePage = lazy(() => import('./components/Pages/Home'));
@@ -33,6 +33,7 @@ const App: React.FC = () => (
                             />
                             <Route component={NotFoundPage} />
                         </Switch>
+                        <ScrollToTop />
                     </Suspense>
                 </Router>
             </PageWrapper>

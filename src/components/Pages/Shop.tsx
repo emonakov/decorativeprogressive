@@ -9,10 +9,10 @@ import 'react-placeholder/lib/reactPlaceholder.css';
 import { ShopPageHero } from '../Heroes';
 import ContentWrapper from '../../shared/components/ContentWrapper';
 import Img from '../../shared/components/CloudinaryImage';
-import { ItemInterface } from '../../Interfaces/ProductItemInterface';
-
+import Decorative from '../../shared/components/Decorative';
 import getShopContent from '../../mocks/shop';
 import LinkToUnstyled from '../../shared/components/LinkTo';
+import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
 interface State {
     loading: boolean;
@@ -64,6 +64,10 @@ const Gallery = styled.section`
     @media (max-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
 `;
 
 const P = styled.p`
@@ -73,7 +77,7 @@ const P = styled.p`
 
 const ProdImg = styled(Img)`
     opacity: 0.9;
-    border-bottom: ${({ theme }) => `${theme.menuBorderStyle} ${theme.menuBorderColor}`};
+    /* border-bottom: ${({ theme }) => `${theme.menuBorderStyle} ${theme.menuBorderColor}`}; */
 
     &:hover {
         opacity: 1;
@@ -114,6 +118,7 @@ const ShopPage: React.FC = ({ children }) => {
                         <div key={id}>
                             <LinkTo to={`/shop/item/${id}`}>
                                 <ProdImg publicId={`${productAssets}${images.main}`} width="300" crop="scale" />
+                                <Decorative />
                                 <P>{title}</P>
                             </LinkTo>
                         </div>

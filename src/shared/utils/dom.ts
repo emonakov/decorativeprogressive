@@ -1,6 +1,6 @@
 export const selectElement = (selector: string): Element | null => document.querySelector(selector);
 
-export const scrollTo = (selector: string, top: boolean): void => {
+export const scrollTo = (selector: string, top = false): void => {
     setTimeout(() => {
         if (top) {
             window.scrollTo({ top: 0 });

@@ -7,7 +7,7 @@ const theme: DefaultTheme = {
     paddingSm: '5px',
     paddingMdOffsetSm: '10px',
     paddingMd: '15px',
-    menuBorderHeight: '15px',
+    menuBorderHeight: '10px',
     menuBorderStyle: '1px solid',
     frameBackground: colors.frameBackground,
     textColor: colors.textColor,
