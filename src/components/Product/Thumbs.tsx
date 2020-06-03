@@ -11,7 +11,7 @@ interface ThumbsInterface {
     setMainImg(image: string): void;
 }
 
-const Thumb = styled(Img)<{ active: boolean }>`
+const Thumb = styled(Img)<{ active: number }>`
     opacity: 0.9;
     width: ${({ theme }) => theme.galleryThumbWidth};
     padding: 0;
@@ -43,7 +43,7 @@ const Thumbs: React.FC<ThumbsInterface> = ({
             <Thumb
                 publicId={`${mainImageUrl}`}
                 onClick={() => setMainImg(item.images.main)}
-                active={mainImg === item.images.main}
+                active={Number(mainImg === item.images.main)}
                 width="140"
                 crop="scale"
             />
@@ -53,7 +53,7 @@ const Thumbs: React.FC<ThumbsInterface> = ({
                 <Thumb
                     publicId={`${item.productAssets}${image}`}
                     onClick={() => setMainImg(image)}
-                    active={mainImg === image}
+                    active={Number(mainImg === image)}
                     width="140"
                     crop="scale"
                 />

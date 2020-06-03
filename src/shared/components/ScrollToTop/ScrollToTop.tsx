@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -14,13 +14,31 @@ const PointerWrapper = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    opacity: 0;
+
+    &.visible {
+        opacity: 1;
+    }
 `;
 
 const ScrollToTop: React.FC = () => {
-    console.log('lalal');
+    const scrollerRef = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY >= 500) {
+                scrollerRef.current!.classList.add('visible');
+            } else {
+                scrollerRef.current!.classList.remove('visible');
+            }
+        });
+    }, []);
 
     return (
-        <PointerWrapper onClick={() => scrollTo('nav')}>
+        <PointerWrapper
+            onClick={() => scrollTo('nav')}
+            ref={scrollerRef}
+        >
             <FontAwesomeIcon icon={['fas', 'angle-double-up']} size="2x" />
         </PointerWrapper>
     );
