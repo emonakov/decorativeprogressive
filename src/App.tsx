@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { CloudinaryContext } from 'cloudinary-react';
 
 import './shared/libs/FontAwesomeLib';
 import { theme } from './config';
@@ -17,23 +18,25 @@ const ProductPage = lazy(() => import('./components/Pages/Product'));
 
 const App: React.FC = () => (
     <ThemeProvider theme={theme}>
-        <PageWrapper>
-            <Router>
-                <Suspense fallback={<Fallback />}>
-                    <Menubar />
-                    <Switch>
-                        <Route path="/" exact component={HomePage} />
-                        <Route path="/shop" exact component={ShopPage} />
-                        <Route
-                            path={'/shop/item/:id(\\d+)'}
-                            strict
-                            component={ProductPage}
-                        />
-                        <Route component={NotFoundPage} />
-                    </Switch>
-                </Suspense>
-            </Router>
-        </PageWrapper>
+        <CloudinaryContext cloudName="decorativeprogressive" includeOwnBody>
+            <PageWrapper>
+                <Router>
+                    <Suspense fallback={<Fallback />}>
+                        <Menubar />
+                        <Switch>
+                            <Route path="/" exact component={HomePage} />
+                            <Route path="/shop" exact component={ShopPage} />
+                            <Route
+                                path={'/shop/item/:id(\\d+)'}
+                                strict
+                                component={ProductPage}
+                            />
+                            <Route component={NotFoundPage} />
+                        </Switch>
+                    </Suspense>
+                </Router>
+            </PageWrapper>
+        </CloudinaryContext>
     </ThemeProvider>
 );
 

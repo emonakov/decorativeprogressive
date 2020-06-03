@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { Image } from 'cloudinary-react';
+
 interface ImgProps {
     opacity?: number;
 }
 
-const Img = styled.img`
+const Img = styled(Image)`
     max-width: 100%;
     opacity: ${(p: ImgProps) => p.opacity || 1};
     transition: opacity 0.2s ease-in;

@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "latest",
     "@fortawesome/free-solid-svg-icons": "latest",
     "@fortawesome/react-fontawesome": "latest",
+    "cloudinary-react": "^1.5.0",
     "html-react-parser": "^0.10.5",
     "react": "latest",
     "react-dom": "latest",
