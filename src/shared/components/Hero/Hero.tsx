@@ -35,7 +35,7 @@ const Fade = styled.div`
     height: 100%;
     background: ${({ theme }) => theme.wrapperBackground};
     position: absolute;
-    transition: top 3s ease-out;
+    transition: top 1.5s ease-out;
     box-shadow: 0 0 40px 5px ${({ theme }) => theme.wrapperBackground};
     top: 0;
 
