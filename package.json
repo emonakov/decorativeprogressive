@@ -16,11 +16,11 @@
     "react-placeholder": "^4.0.1",
     "react-router": "latest",
     "react-router-dom": "latest",
-    "react-scripts": "latest",
+    "react-scripts": "3.4.4",
     "react-use": "^15.1.1",
     "redaxios": "latest",
     "styled-components": "latest",
-    "typescript": "latest"
+    "typescript": "^4.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,10 +52,10 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-common-types": "latest",
-    "@types/jest": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.9",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
     "@types/react-fontawesome": "latest",
     "@types/react-helmet": "latest",
     "@types/react-router": "latest",
