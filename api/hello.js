@@ -1,16 +1,17 @@
-const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
 
 const uri = process.env.MONGO_URL;
-const client = new MongoClient(uri, { useNewUrlParser: true });
+mongoose.connect(uri, {useNewUrlParser: true});
 
 module.exports = (req, res) => {
     // const { name = 'World' } = req.query;
-    client.connect((err) => {
-        if (err) {
-            res.status(200).send(JSON.stringify(err));
-        }
-
+    const db = mongoose.connection;
+    db.on('error', (err) => {
+        res.status(200).send(JSON.stringify(err));
+    });
+    db.once('open', function() {
         res.status(200).send('Weird thing');
     });
-    // res.status(200).send(`Hello, ${name}!`);
+
+    res.status(200).send('Nothing happened');
 };
