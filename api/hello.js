@@ -6,8 +6,8 @@ mongoose.connect(uri, { useNewUrlParser: true });
 const productSchema = new mongoose.Schema({
     title: String,
     price: number,
-    createdAt: Date
-    productAssets: String
+    createdAt: Date,
+    productAssets: String,
     images: {
         main: String,
         add: [String]
