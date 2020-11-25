@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
   db.on("error", (err) => {
     res.status(200).send(JSON.stringify(err));
   });
-  db.once("open", async () {
+  db.once("open", async () => {
     const products = await Product.find();
     res.status(200).send(JSON.stringify(products));
   });
