@@ -13,5 +13,7 @@ module.exports = (req, res) => {
         res.status(200).send('Weird thing');
     });
 
-    res.status(200).send('Nothing happened');
+    setTimeout(() => {
+        res.status(200).send('Nothing happened');
+    }, 5000)
 };
