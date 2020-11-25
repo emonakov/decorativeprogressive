@@ -5,7 +5,7 @@ mongoose.connect(uri, { useNewUrlParser: true });
 
 const productSchema = new mongoose.Schema({
     title: String,
-    price: number,
+    price: Number,
     createdAt: Date,
     productAssets: String,
     images: {
