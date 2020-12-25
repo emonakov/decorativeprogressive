@@ -8,9 +8,10 @@ import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 import { HomePageHero } from '../Heroes';
 
 import getShopContent from '../../mocks/shop';
+import { getProduct } from '../../firebase/firebase.utils';
 
 interface ProductProps {
-    match: { params: { id: number } };
+    match: { params: { id: string } };
 }
 
 interface State {
@@ -73,8 +74,7 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
     useEffect(() => {
         dispatch({ type: 'CONTENT_REQUEST' });
         (async () => {
-            const data = await getShopContentCallback();
-            const product = data.items.find((item) => item.id === Number(match.params.id));
+            const product = await getProduct(match.params.id);
             dispatch({ type: 'CONTENT_SUCCESS', payload: { item: product } });
         })();
     }, [dispatch, getShopContentCallback, match]);
