@@ -9,8 +9,6 @@
     "cloudinary-react": "^1.5.0",
     "firebase": "^8.2.1",
     "html-react-parser": "^0.10.5",
-    "mongodb": "^3.6.3",
-    "mongoose": "^5.10.15",
     "react": "latest",
     "react-dom": "latest",
     "react-helmet": "latest",
