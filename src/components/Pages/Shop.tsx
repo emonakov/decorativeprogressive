@@ -10,9 +10,10 @@ import { ShopPageHero } from '../Heroes';
 import ContentWrapper from '../../shared/components/ContentWrapper';
 import Img from '../../shared/components/CloudinaryImage';
 import Decorative from '../../shared/components/Decorative';
-import getShopContent from '../../mocks/shop';
+// import getShopContent from '../../mocks/shop';
 import LinkToUnstyled from '../../shared/components/LinkTo';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
+import { getProducts } from '../../firebase/firebase.utils';
 
 interface State {
     loading: boolean;
@@ -22,7 +23,7 @@ interface State {
 
 interface Action {
     type: string;
-    payload?: Record<string, unknown>;
+    payload?: Partial<State>;
 }
 
 const initialContent = {
@@ -33,6 +34,7 @@ const initialContent = {
 };
 
 const reducer = (state: State, action: Action) => {
+    console.log(action);
     switch (action.type) {
         case 'CONTENT_REQUEST':
             return {
@@ -93,12 +95,12 @@ const LinkTo = styled(LinkToUnstyled)`
 
 const ShopPage: React.FC = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialContent);
-    const getShopContentCallback = useCallback(() => (getShopContent()), []);
+    const getShopContentCallback = useCallback(() => (getProducts()), []);
     useEffect(() => {
         dispatch({ type: 'CONTENT_REQUEST' });
         (async () => {
             const data = await getShopContentCallback();
-            dispatch({ type: 'CONTENT_SUCCESS', payload: data });
+            dispatch({ type: 'CONTENT_SUCCESS', payload: { items: data } });
         })();
     }, [dispatch, getShopContentCallback]);
 

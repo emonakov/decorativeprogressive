@@ -31,6 +31,9 @@ module.exports = {
         'import/extensions': 'off',
         'react/jsx-props-no-spreading': 'off',
         '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off"
     },
     settings: {
         react: {
