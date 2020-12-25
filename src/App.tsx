@@ -27,7 +27,7 @@ const App: React.FC = () => (
                             <Route path="/" exact component={HomePage} />
                             <Route path="/shop" exact component={ShopPage} />
                             <Route
-                                path={'/shop/item/:id(\\d+)'}
+                                path={'/shop/item/:id(\\w+)'}
                                 strict
                                 component={ProductPage}
                             />
