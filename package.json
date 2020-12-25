@@ -7,6 +7,7 @@
     "@fortawesome/free-solid-svg-icons": "latest",
     "@fortawesome/react-fontawesome": "latest",
     "cloudinary-react": "^1.5.0",
+    "firebase": "^6.0.2",
     "html-react-parser": "^0.10.5",
     "mongodb": "^3.6.3",
     "mongoose": "^5.10.15",
@@ -68,6 +69,7 @@
     "eslint-config-prettier": "latest",
     "eslint-config-react": "latest",
     "eslint-import-resolver-typescript": "latest",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "latest",
     "jest-styled-components": "latest",
     "prettier": "latest"
