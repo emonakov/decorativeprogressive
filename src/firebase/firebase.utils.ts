@@ -1,4 +1,5 @@
 import firebase from 'firebase/app';
+import 'firebase/auth';
 import 'firebase/firestore';
 
 import { ItemInterface } from '../Interfaces/ProductItemInterface';
@@ -33,3 +34,17 @@ export const getProduct = async (productId: string): Promise<ItemInterface> => {
 
     return product;
 };
+
+export const isUserExists = async (userId: string): Promise<boolean> => {
+    const userRef = db.collection('users').doc(userId);
+    const snapshot = await userRef.get();
+
+    return snapshot.exists;
+};
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = (): Promise<firebase.auth.UserCredential> => auth.signInWithPopup(provider);
