@@ -32,8 +32,9 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off',
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": "off"
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars-experimental": "error",
+        "no-unused-vars": "off"
     },
     settings: {
         react: {
@@ -42,4 +43,7 @@ module.exports = {
         },
     },
     parser: '@typescript-eslint/parser',
+    parserOptions: {
+        project: `./tsconfig.json`
+    },
 };
