@@ -16,14 +16,15 @@ import Menubar from './components/Menubar';
 import ScrollToTop from './shared/components/ScrollToTop';
 import Fallback from './components/Fallback';
 
+import { useContextState } from './shared/components/StateProvider';
 import { auth, isUserExists } from './firebase/firebase.utils';
 
 const HomePage = lazy(() => import('./components/Pages/Home'));
 const ShopPage = lazy(() => import('./components/Pages/Shop'));
 const NotFoundPage = lazy(() => import('./components/Pages/NotFound'));
 const ProductPage = lazy(() => import('./components/Pages/Product'));
-const Test = lazy(() => import('./components/Pages/SignIn'));
-const SignOut = lazy(() => import('./components/Pages/SignOut'));
+const AdminMain = lazy(() => import('./components/Pages/Admin/Main'));
+const Products = lazy(() => import('./components/Pages/Admin/Products'));
 
 const AuthenticatedRoutes = () => (
     <Switch>
@@ -35,7 +36,8 @@ const AuthenticatedRoutes = () => (
             component={ProductPage}
         />
         <Route path="/signedin" exact component={() => <h1>BLA</h1>} />
-        <Route path="/signout" exact component={SignOut} />
+        <Route path="/admin" exact component={AdminMain} />
+        <Route path="/admin/products" exact component={Products} />
         <Route component={NotFoundPage} />
     </Switch>
 );
@@ -49,27 +51,28 @@ const UnauthenticatedRoutes = () => (
             strict
             component={ProductPage}
         />
-        <Route path="/signin" exact component={Test} />
+        <Route path="/admin" exact component={AdminMain} />
         <Route component={NotFoundPage} />
     </Switch>
 );
 
 const App: React.FC = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [{ isAuthenticated }, dispatch] = useContextState();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const unsubscribeFromAuth = auth.onAuthStateChanged(async (authData) => {
             if (authData) {
-                setIsAuthenticated(await isUserExists(authData?.uid));
+                const userExists = await isUserExists(authData?.uid);
+                dispatch({ type: 'update', payload: { isAuthenticated: userExists } });
             } else {
-                setIsAuthenticated(false);
+                dispatch({ type: 'update', payload: { isAuthenticated: false } });
             }
             setIsLoading(false);
         });
 
         return unsubscribeFromAuth;
-    }, []);
+    }, [dispatch]);
 
     return (
         <ThemeProvider theme={theme}>
