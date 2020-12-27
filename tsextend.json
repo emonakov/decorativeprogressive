@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "~shared/*": ["shared/components/*"],
+      "~libs/*": ["shared/libs/*"],
+      "~utils/*": ["shared/utils/*"],
+      "~pages/*": ["components/Pages/*"],
+      "~components/*": ["components/*"],
+      "~interfaces/*": ["Interfaces/*"],
+      "~firebase/*": ["firebase/*"],
+      "~images/*": ["images/*"],
+      "~config/*": ["config/*"]
+    }
+  }
+}
