@@ -2,6 +2,7 @@ import React from 'react';
 
 import { HomePageHero } from '../../Heroes';
 import ContentWrapper from '../../../shared/components/ContentWrapper';
+import LinkTo from '../../../shared/components/LinkTo';
 
 import { useContextState } from '../../../shared/components/StateProvider';
 import { signInWithGoogle, auth } from '../../../firebase/firebase.utils';
@@ -17,7 +18,12 @@ const Main: React.FC = () => {
             <ContentWrapper>
                 <h1>TEST</h1>
                 {!state.isAuthenticated && <button type="button" onClick={signInWithGoogle}>SIGN IN</button>}
-                {state.isAuthenticated && <button type="button" onClick={() => auth.signOut()}>SIGN OUT</button>}
+                {state.isAuthenticated && (
+                    <>
+                        <button type="button" onClick={() => auth.signOut()}>SIGN OUT</button>
+                        <LinkTo to="/admin/products"><button type="button">PRODUCTS</button></LinkTo>
+                    </>
+                )}
             </ContentWrapper>
         </>
     );
