@@ -1,4 +1,3 @@
-/* tslint:disable */
 import React, { useContext, createContext, useReducer } from 'react';
 
 import { ItemInterface } from '../../../Interfaces/ProductItemInterface';
