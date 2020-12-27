@@ -73,7 +73,7 @@ const Gallery = styled.section`
 
 const P = styled.p`
     text-align: center;
-    margin: 0 0 ${({ theme }) => theme.paddingMd};
+    margin: ${({ theme }) => theme.paddingMd} 0;
 `;
 
 const ProdImg = styled(Img)`
@@ -119,8 +119,9 @@ const ShopPage: React.FC = ({ children }) => {
                         <div key={id}>
                             <LinkTo to={`/shop/item/${id}`}>
                                 <ProdImg publicId={`${productAssets}${images.main}`} width="300" crop="scale" />
-                                <Decorative />
-                                <P>{title}</P>
+                                <Decorative>
+                                    <P>{title}</P>
+                                </Decorative>
                             </LinkTo>
                         </div>
                     ))}

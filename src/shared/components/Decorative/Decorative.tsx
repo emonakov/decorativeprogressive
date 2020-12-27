@@ -20,12 +20,12 @@ const DecorLower = styled.div`
     border-left: ${({ theme }) => theme.menuBorderStyle};
     border-top: ${({ theme }) => theme.menuBorderStyle};
     border-color: ${({ theme }) => theme.menuBorderColor};
-    margin-top: 5px;
 `;
 
-const Decorative = () => (
+const Decorative: React.FC = ({ children }) => (
     <>
         <DecorUpper />
+        {children}
         <DecorLower />
     </>
 );
