@@ -36,7 +36,7 @@ const ScrollToTop: React.FC = () => {
 
     return (
         <PointerWrapper
-            onClick={() => scrollTo('nav')}
+            onClick={() => scrollTo('body')}
             ref={scrollerRef}
         >
             <FontAwesomeIcon icon={['fas', 'angle-double-up']} size="2x" />
