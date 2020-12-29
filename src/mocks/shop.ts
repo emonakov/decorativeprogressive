@@ -1,4 +1,16 @@
-export default async () => ({
+export default async (): Promise<{
+    content: string | null;
+    items: Array<{
+        title: string;
+        description: string;
+        price: number,
+        id: number;
+        productAssets: string;
+        images: { main: string; add: string[] }
+    }>;
+    errors?: string[];
+    loading?: boolean;
+}> => ({
     content: null,
     items: [
         {
@@ -19,10 +31,7 @@ export default async () => ({
             productAssets: 'assets/product_4/',
             images: {
                 main: 'main_masg6s.jpg',
-                add: [
-                    'img1_wdbitk.jpg',
-                    'img2_am87vl.jpg',
-                ],
+                add: ['img1_wdbitk.jpg', 'img2_am87vl.jpg'],
             },
         },
         {
@@ -43,10 +52,7 @@ export default async () => ({
             productAssets: 'assets/product_5/',
             images: {
                 main: '41_vctoj8.jpg',
-                add: [
-                    '42_lxbrgi.jpg',
-                    '44_acxnmb.jpg',
-                ],
+                add: ['42_lxbrgi.jpg', '44_acxnmb.jpg'],
             },
         },
         {
@@ -67,10 +73,7 @@ export default async () => ({
             productAssets: 'assets/product_6/',
             images: {
                 main: '51_zd4ps3.jpg',
-                add: [
-                    '52_tycvaw.jpg',
-                    '53_durxgt.jpg',
-                ],
+                add: ['52_tycvaw.jpg', '53_durxgt.jpg'],
             },
         },
         {
@@ -91,12 +94,7 @@ export default async () => ({
             productAssets: 'assets/product_7/',
             images: {
                 main: '61_cjarcd.jpg',
-                add: [
-                    '63_sszuog.jpg',
-                    '64_u2wulm.jpg',
-                    '68_yh7g1q.jpg',
-                    '69_kanfqx.jpg',
-                ],
+                add: ['63_sszuog.jpg', '64_u2wulm.jpg', '68_yh7g1q.jpg', '69_kanfqx.jpg'],
             },
         },
         {
@@ -117,9 +115,7 @@ export default async () => ({
             productAssets: 'assets/product_8/',
             images: {
                 main: '72_pogwag.jpg',
-                add: [
-                    '70_dncleo.jpg',
-                ],
+                add: ['70_dncleo.jpg'],
             },
         },
         {
@@ -140,12 +136,7 @@ export default async () => ({
             productAssets: 'assets/product_1/',
             images: {
                 main: 'main_enudmv.jpg',
-                add: [
-                    'img1_rirfnr.jpg',
-                    'img2_dht5h8.jpg',
-                    'img3_czmt3r.jpg',
-                    'img4_krjztx.jpg',
-                ],
+                add: ['img1_rirfnr.jpg', 'img2_dht5h8.jpg', 'img3_czmt3r.jpg', 'img4_krjztx.jpg'],
             },
         },
         {
@@ -166,11 +157,7 @@ export default async () => ({
             productAssets: 'assets/product_2/',
             images: {
                 main: 'main_pz0wdg.jpg',
-                add: [
-                    'img1_ezlibo.jpg',
-                    'img2_wqmmlp.jpg',
-                    'img3_jloubu.jpg',
-                ],
+                add: ['img1_ezlibo.jpg', 'img2_wqmmlp.jpg', 'img3_jloubu.jpg'],
             },
         },
         {
@@ -191,9 +178,7 @@ export default async () => ({
             productAssets: 'assets/product_3/',
             images: {
                 main: 'main_fuedeo.jpg',
-                add: [
-                    'img1_tt7xpz.jpg',
-                ],
+                add: ['img1_tt7xpz.jpg'],
             },
         },
     ],

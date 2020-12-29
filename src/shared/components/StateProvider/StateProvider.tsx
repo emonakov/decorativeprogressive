@@ -2,18 +2,17 @@ import React, { useContext, createContext, useReducer } from 'react';
 
 import { ItemInterface } from '../../../Interfaces/ProductItemInterface';
 
-interface ActionInterface {
-    type: 'update';
-    payload: {
-        products?: ItemInterface[];
-    }
-}
-
 interface StateInterface {
     products?: ItemInterface[];
     isAuthenticated?: boolean;
 }
 
+interface ActionInterface {
+    type: 'update';
+    payload: {
+        products?: ItemInterface[]
+    }
+}
 interface ProviderProps {
     isAuthenticated?: boolean;
 }

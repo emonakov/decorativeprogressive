@@ -11,7 +11,11 @@ interface ThumbsInterface {
     setMainImg(image: string): void;
 }
 
-const Thumb = styled(Img)<{ active: number }>`
+interface ThumbProps {
+    active: number;
+}
+
+const Thumb = styled(Img)<ThumbProps>`
     opacity: 0.9;
     width: ${({ theme }) => theme.galleryThumbWidth};
     padding: 0;
