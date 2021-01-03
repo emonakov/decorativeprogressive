@@ -23,3 +23,29 @@ const getProduct = async (productId: string): Promise<ItemInterface> => {
 
 export const useGetProducts = (): StateInterface => useService(getProducts, 'items');
 export const useGetProduct = (productId: string): StateInterface => useService(getProduct, 'item', productId);
+
+export const saveProduct = async (productId: string, params: Partial<ItemInterface>): Promise<ItemInterface> => {
+    const productRef = db.collection('products').doc(productId);
+    await productRef.set({
+        ...params,
+        updatedAt: new Date(),
+    }, { merge: true });
+
+    return getProduct(productId);
+};
+
+export const createProduct = async (params: Partial<ItemInterface>): Promise<string> => {
+    const productRef = db.collection('products').doc();
+
+    await productRef.set({
+        ...params,
+        productAssets: 'assets/product_5/',
+        images: {
+            main: '41_vctoj8.jpg',
+            add: ['42_lxbrgi.jpg', '44_acxnmb.jpg'],
+        },
+        createdAt: new Date(),
+    });
+
+    return productRef.id;
+};

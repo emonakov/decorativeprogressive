@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import ContentWrapper from '../../../shared/components/ContentWrapper';
 import LinkTo from '../../../shared/components/LinkTo';
 import Decorative from '../../../shared/components/Decorative';
-import Img from '../../../shared/components/CloudinaryImage';
 
 import { useGetProducts } from '../../../services/products';
 
@@ -19,15 +18,6 @@ const Gallery = styled.section`
 
     @media (max-width: 480px) {
         grid-template-columns: 1fr;
-    }
-`;
-
-const ProdImg = styled(Img)`
-    opacity: 0.9;
-    /* border-bottom: ${({ theme }) => `${theme.menuBorderStyle} ${theme.menuBorderColor}`}; */
-
-    &:hover {
-        opacity: 1;
     }
 `;
 
@@ -49,12 +39,9 @@ const Products: React.FC = () => {
                         {items && items.map(({
                             title,
                             id,
-                            images,
-                            productAssets,
                         }) => (
                             <div key={id}>
                                 <LinkTo to={`/admin/products/${id}`}>
-                                    <ProdImg publicId={`${productAssets}${images.main}`} width="300" crop="scale" />
                                     <Decorative>
                                         <P>{title}</P>
                                     </Decorative>

@@ -22,6 +22,7 @@ const Main: React.FC = () => {
                     <>
                         <button type="button" onClick={() => auth.signOut()}>SIGN OUT</button>
                         <LinkTo to="/admin/products">PRODUCTS</LinkTo>
+                        <LinkTo to="/admin/products/add">ADD PRODUCT</LinkTo>
                     </>
                 )}
             </ContentWrapper>

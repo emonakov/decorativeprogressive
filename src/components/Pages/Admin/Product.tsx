@@ -1,46 +1,33 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 
 import ContentWrapper from '../../../shared/components/ContentWrapper';
+import ProductForm from '../../../shared/components/ProductForm';
 
-import { useGetProduct } from '../../../services/products';
+import { useGetProduct, saveProduct } from '../../../services/products';
+import { useContextState } from '../../../shared/components/StateProvider';
+
+import type { ItemInterface } from '../../../Interfaces/ProductItemInterface';
 
 interface ProductProps {
     match: { params: { id: string } };
 }
 
-interface FormData {
-    title: string;
-    description: string;
-    price: number,
-    productAssets: string;
-}
-
 const Product: React.FC<ProductProps> = ({ match }) => {
+    const [, dispatch] = useContextState();
     const { loading, item } = useGetProduct(match.params.id);
-    const {
-        register,
-        handleSubmit,
-    } = useForm<FormData>();
 
-    const onSubmit = handleSubmit((form) => {
-        console.log(form);
-    });
+    const onSubmit = async (form: Partial<ItemInterface>) => {
+        const product = await saveProduct(match.params.id, form);
+        dispatch({ type: 'update', payload: { item: product } });
+    };
 
     return (!loading && item && (
         <ContentWrapper>
-            <h1>{item.title}</h1>
-            <form onSubmit={onSubmit}>
-                <label htmlFor="title">
-                    Title
-                    <input id="title" name="title" ref={register} defaultValue={item.title} />
-                </label>
-                <label htmlFor="description">
-                    Description
-                    <input name="description" ref={register} defaultValue={item.description} />
-                </label>
-                <button type="submit">submit</button>
-            </form>
+            <ProductForm
+                formTitle={item.title}
+                item={item}
+                onSave={onSubmit}
+            />
         </ContentWrapper>
     )) || null;
 };
