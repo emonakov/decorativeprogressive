@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import ContentWrapper from '../../shared/components/ContentWrapper';
 // import BuyButton from '../../shared/components/PayPal';
 import Gallery from '../Product/Gallery';

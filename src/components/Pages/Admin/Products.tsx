@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-    List, ListItem, Box,
-} from '@modulz/radix';
 
+import Img from '../../../shared/components/CloudinaryImage';
 import ContentWrapper from '../../../shared/components/ContentWrapper';
 import LinkTo from '../../../shared/components/LinkTo';
+import AdminMenu from '../../../shared/components/AdminMenu';
 import Decorative from '../../../shared/components/Decorative';
 
 import { useGetProducts } from '../../../services/products';
@@ -24,6 +23,15 @@ const Gallery = styled.section`
     }
 `;
 
+const ProdImg = styled(Img)`
+    opacity: 0.9;
+    /* border-bottom: ${({ theme }) => `${theme.menuBorderStyle} ${theme.menuBorderColor}`}; */
+
+    &:hover {
+        opacity: 1;
+    }
+`;
+
 const P = styled.p`
     text-align: center;
     margin: ${({ theme }) => theme.paddingMd} 0;
@@ -35,24 +43,18 @@ const Products: React.FC = () => {
     return !loading && items
         ? (
             <ContentWrapper>
-                <Box>
-                    <h1>Edit products</h1>
-                    <List>
-                        <LinkTo to="/admin">
-                            <ListItem>
-                                ADMIN MAIN
-                            </ListItem>
-                        </LinkTo>
-                    </List>
-                </Box>
+                <AdminMenu pageTitle="Edit products" />
                 <ContentWrapper>
                     <Gallery>
                         {items && items.map(({
                             title,
                             id,
+                            productAssets,
+                            images,
                         }) => (
                             <div key={id}>
                                 <LinkTo to={`/admin/products/${id}`}>
+                                    <ProdImg publicId={`${productAssets}${images.main}`} width="300" crop="scale" />
                                     <Decorative>
                                         <P>{title}</P>
                                     </Decorative>

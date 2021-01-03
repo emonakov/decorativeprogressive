@@ -1,9 +1,6 @@
 import React from 'react';
-import {
-    List, ListItem, Box,
-} from '@modulz/radix';
 
-import LinkTo from '../../../shared/components/LinkTo';
+import AdminMenu from '../../../shared/components/AdminMenu';
 import ContentWrapper from '../../../shared/components/ContentWrapper';
 import ProductForm from '../../../shared/components/ProductForm';
 
@@ -27,16 +24,7 @@ const Product: React.FC<ProductProps> = ({ match }) => {
 
     return (!loading && item && (
         <ContentWrapper>
-            <Box>
-                <h1>Edit product</h1>
-                <List>
-                    <LinkTo to="/admin">
-                        <ListItem>
-                            ADMIN MAIN
-                        </ListItem>
-                    </LinkTo>
-                </List>
-            </Box>
+            <AdminMenu pageTitle="Edit product" />
             <ProductForm
                 formTitle={item.title}
                 item={item}
