@@ -24,7 +24,8 @@ const ShopPage = lazy(() => import('./components/Pages/Shop'));
 const NotFoundPage = lazy(() => import('./components/Pages/NotFound'));
 const ProductPage = lazy(() => import('./components/Pages/Product'));
 const AdminMain = lazy(() => import('./components/Pages/Admin/Main'));
-const Products = lazy(() => import('./components/Pages/Admin/Products'));
+const AdminProducts = lazy(() => import('./components/Pages/Admin/Products'));
+const AdminProduct = lazy(() => import('./components/Pages/Admin/Product'));
 
 const AuthenticatedRoutes = () => (
     <Switch>
@@ -37,7 +38,8 @@ const AuthenticatedRoutes = () => (
         />
         <Route path="/signedin" exact component={() => <h1>BLA</h1>} />
         <Route path="/admin" exact component={AdminMain} />
-        <Route path="/admin/products" exact component={Products} />
+        <Route path="/admin/products" exact component={AdminProducts} />
+        <Route path={'/admin/products/:id(\\w+)'} exact component={AdminProduct} />
         <Route component={NotFoundPage} />
     </Switch>
 );
