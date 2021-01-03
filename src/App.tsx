@@ -1,8 +1,6 @@
 import React, {
     lazy,
     Suspense,
-    useEffect,
-    useState,
 } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -16,8 +14,7 @@ import Menubar from './components/Menubar';
 import ScrollToTop from './shared/components/ScrollToTop';
 import Fallback from './components/Fallback';
 
-import { useContextState } from './shared/components/StateProvider';
-import { auth, isUserExists } from './firebase/firebase.utils';
+import { useIsUserExist } from './services/user';
 
 const HomePage = lazy(() => import('./components/Pages/Home'));
 const ShopPage = lazy(() => import('./components/Pages/Shop'));
@@ -59,22 +56,7 @@ const UnauthenticatedRoutes = () => (
 );
 
 const App: React.FC = () => {
-    const [{ isAuthenticated }, dispatch] = useContextState();
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const unsubscribeFromAuth = auth.onAuthStateChanged(async (authData) => {
-            if (authData) {
-                const userExists = await isUserExists(authData?.uid);
-                dispatch({ type: 'update', payload: { isAuthenticated: userExists } });
-            } else {
-                dispatch({ type: 'update', payload: { isAuthenticated: false } });
-            }
-            setIsLoading(false);
-        });
-
-        return unsubscribeFromAuth;
-    }, [dispatch]);
+    const { isAuthenticated, isLoading } = useIsUserExist();
 
     return (
         <ThemeProvider theme={theme}>
