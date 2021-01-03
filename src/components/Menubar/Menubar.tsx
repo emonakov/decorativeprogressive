@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import FrameUnstyled from '../../shared/components/Frame';
 import CategoryLink from '../../shared/components/CategoryLink';
 
+import { useContextState } from '../../shared/components/StateProvider';
 import { menuConfig } from '../../config';
 
 const InnerWrapper = styled.nav`
@@ -36,16 +37,22 @@ const Frame = styled(FrameUnstyled)`
     height: 80px;
 `;
 
-const Menubar: React.FC = () => (
-    <InnerWrapper>
-        <MenuBarSection>
-            {menuConfig.map(({ label, link }) => (
-                <Frame key={label}>
-                    <CategoryLink linkTo={link} title={label} exact />
-                </Frame>
-            ))}
-        </MenuBarSection>
-    </InnerWrapper>
-);
+const Menubar: React.FC = () => {
+    const [{ isAuthenticated }] = useContextState();
+
+    return (
+        <InnerWrapper>
+            <MenuBarSection>
+                {menuConfig.map(({ label, link, isAdmin }) => (isAdmin && !isAuthenticated
+                    ? null
+                    : (
+                        <Frame key={label}>
+                            <CategoryLink linkTo={link} title={label} exact />
+                        </Frame>
+                    )))}
+            </MenuBarSection>
+        </InnerWrapper>
+    );
+};
 
 export default Menubar;

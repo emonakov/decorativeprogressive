@@ -1,8 +1,4 @@
-import React, {
-    useReducer,
-    useCallback,
-    useEffect,
-} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import 'react-placeholder/lib/reactPlaceholder.css';
 
@@ -12,50 +8,7 @@ import Img from '../../shared/components/CloudinaryImage';
 import Decorative from '../../shared/components/Decorative';
 // import getShopContent from '../../mocks/shop';
 import LinkToUnstyled from '../../shared/components/LinkTo';
-import { ItemInterface } from '../../Interfaces/ProductItemInterface';
-import { getProducts } from '../../firebase/firebase.utils';
-
-interface State {
-    loading: boolean;
-    items: ItemInterface[];
-    errors?: string[];
-}
-
-interface Action {
-    type: string;
-    payload?: Partial<State>;
-}
-
-const initialContent = {
-    loading: false,
-    images: {},
-    items: [],
-    errors: [],
-};
-
-const reducer = (state: State, action: Action) => {
-    switch (action.type) {
-        case 'CONTENT_REQUEST':
-            return {
-                ...state,
-                loading: true,
-            };
-        case 'CONTENT_SUCCESS':
-            return {
-                ...state,
-                ...action.payload,
-                loading: false,
-            };
-        case 'CONTENT_FAILURE':
-            return {
-                ...state,
-                loading: false,
-                errors: ['something went wrong'],
-            };
-        default:
-            return state;
-    }
-};
+import { useGetProducts } from '../../services/products';
 
 const Gallery = styled.section`
     display: grid;
@@ -93,24 +46,14 @@ const LinkTo = styled(LinkToUnstyled)`
 `;
 
 const ShopPage: React.FC = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, initialContent);
-    const getShopContentCallback = useCallback(() => (getProducts()), []);
-    useEffect(() => {
-        dispatch({ type: 'CONTENT_REQUEST' });
-        (async () => {
-            const data = await getShopContentCallback();
-            dispatch({ type: 'CONTENT_SUCCESS', payload: { items: data } });
-        })();
-    }, [dispatch, getShopContentCallback]);
-
-    const { loading, items } = state;
+    const { loading, items } = useGetProducts();
 
     return (!loading && (
         <>
             <ShopPageHero />
             <ContentWrapper>
                 <Gallery>
-                    {items.map(({
+                    {items && items.map(({
                         title,
                         id,
                         images,

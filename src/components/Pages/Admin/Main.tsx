@@ -21,7 +21,7 @@ const Main: React.FC = () => {
                 {state.isAuthenticated && (
                     <>
                         <button type="button" onClick={() => auth.signOut()}>SIGN OUT</button>
-                        <LinkTo to="/admin/products"><button type="button">PRODUCTS</button></LinkTo>
+                        <LinkTo to="/admin/products">PRODUCTS</LinkTo>
                     </>
                 )}
             </ContentWrapper>

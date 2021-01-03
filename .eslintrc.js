@@ -39,6 +39,7 @@ module.exports = {
         '@typescript-eslint/no-unused-vars-experimental': 'error',
         'no-unused-vars': 'off',
         'no-undef': 'off',
+        'react-hooks/exhaustive-deps': 'off',
       },
     },
   ],

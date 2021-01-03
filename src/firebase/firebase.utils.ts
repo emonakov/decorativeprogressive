@@ -17,17 +17,6 @@ firebase.initializeApp(config);
 
 export const db = firebase.firestore();
 
-export const getProducts = async (): Promise<ItemInterface[]> => {
-    const products: Array<any> = [];
-    const productsRef = db.collection('products');
-    const snapshot = await productsRef.get();
-    snapshot.forEach((doc) => {
-        products.push({ id: doc.id, ...doc.data() });
-    });
-
-    return products;
-};
-
 export const getProduct = async (productId: string): Promise<ItemInterface> => {
     const productRef = db.collection('products').doc(productId);
     const product = (await productRef.get()).data() as ItemInterface;
