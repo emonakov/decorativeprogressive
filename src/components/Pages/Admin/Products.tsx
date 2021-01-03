@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import {
+    List, ListItem, Box,
+} from '@modulz/radix';
 
 import ContentWrapper from '../../../shared/components/ContentWrapper';
 import LinkTo from '../../../shared/components/LinkTo';
@@ -32,8 +35,16 @@ const Products: React.FC = () => {
     return !loading && items
         ? (
             <ContentWrapper>
-                <h1>Products admin</h1>
-                <LinkTo to="/admin">ADMIN MAIN</LinkTo>
+                <Box>
+                    <h1>Edit products</h1>
+                    <List>
+                        <LinkTo to="/admin">
+                            <ListItem>
+                                ADMIN MAIN
+                            </ListItem>
+                        </LinkTo>
+                    </List>
+                </Box>
                 <ContentWrapper>
                     <Gallery>
                         {items && items.map(({

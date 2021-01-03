@@ -5,6 +5,7 @@ import React, {
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { CloudinaryContext } from 'cloudinary-react';
+import { RadixProvider } from '@modulz/radix';
 
 import './shared/libs/FontAwesomeLib';
 import { theme } from './config';
@@ -62,22 +63,24 @@ const App: React.FC = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <CloudinaryContext cloudName="decorativeprogressive" includeOwnBody>
-                <PageWrapper>
-                    <Router>
-                        <Suspense fallback={<Fallback />}>
-                            <Menubar />
-                            {!isLoading && (
-                                <>
-                                    {!isAuthenticated && <UnauthenticatedRoutes />}
-                                    {isAuthenticated && <AuthenticatedRoutes />}
-                                </>
-                            )}
-                            <ScrollToTop />
-                        </Suspense>
-                    </Router>
-                </PageWrapper>
-            </CloudinaryContext>
+            <RadixProvider>
+                <CloudinaryContext cloudName="decorativeprogressive" includeOwnBody>
+                    <PageWrapper>
+                        <Router>
+                            <Suspense fallback={<Fallback />}>
+                                <Menubar />
+                                {!isLoading && (
+                                    <>
+                                        {!isAuthenticated && <UnauthenticatedRoutes />}
+                                        {isAuthenticated && <AuthenticatedRoutes />}
+                                    </>
+                                )}
+                                <ScrollToTop />
+                            </Suspense>
+                        </Router>
+                    </PageWrapper>
+                </CloudinaryContext>
+            </RadixProvider>
         </ThemeProvider>
     );
 };

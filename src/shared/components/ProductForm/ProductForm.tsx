@@ -1,11 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
+import {
+    Button,
+    Flex as FlexUnstyled,
+    Text,
+    Input,
+    Textarea,
+} from '@modulz/radix';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import ContentWrapper from '../ContentWrapper';
-
 import type { ItemInterface } from '../../../Interfaces/ProductItemInterface';
+
+const Flex = styled(FlexUnstyled)`
+    flex-direction: column;
+`;
 
 interface AddProductInterface {
     onSave: (product: Partial<ItemInterface>) => void;
@@ -31,27 +41,48 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
     const onSubmit = handleSubmit(onSave);
 
     return (
-        <ContentWrapper>
+        <Flex>
             <h1>{formTitle}</h1>
             <form onSubmit={onSubmit}>
                 <label htmlFor="title">
-                    Title
-                    <input id="title" name="title" ref={register} defaultValue={item?.title} />
+                    <Text size={4}>Title</Text>
+                    <Input
+                        size={1}
+                        id="title"
+                        name="title"
+                        ref={register}
+                        defaultValue={item?.title}
+                        placeholder="product title"
+                    />
                     <p>{errors.title?.message}</p>
                 </label>
                 <label htmlFor="description">
-                    Description
-                    <textarea id="description" name="description" ref={register} defaultValue={item?.description} />
+                    <Text size={4}>Description</Text>
+                    <Textarea
+                        placeholder="product description"
+                        id="description"
+                        name="description"
+                        ref={register}
+                        size={1}
+                        defaultValue={item?.description}
+                    />
                     <p>{errors.description?.message}</p>
                 </label>
                 <label htmlFor="price">
-                    Price
-                    <input id="price" name="price" ref={register} defaultValue={item?.price} />
+                    <Text size={4}>Price</Text>
+                    <Input
+                        size={1}
+                        id="price"
+                        name="price"
+                        ref={register}
+                        defaultValue={item?.price}
+                        placeholder="product price"
+                    />
                     <p>{errors.price?.message}</p>
                 </label>
-                <button type="submit">submit</button>
+                <Button size={1} variant="blue">SUBMIT</Button>
             </form>
-        </ContentWrapper>
+        </Flex>
     );
 };
 
