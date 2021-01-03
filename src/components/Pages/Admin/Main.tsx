@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+    Button, List, ListItem, Box,
+} from '@modulz/radix';
 
 import { HomePageHero } from '../../Heroes';
 import ContentWrapper from '../../../shared/components/ContentWrapper';
@@ -16,13 +19,23 @@ const Main: React.FC = () => {
                 <h1>Admin entrance</h1>
             </HomePageHero>
             <ContentWrapper>
-                <h1>TEST</h1>
-                {!state.isAuthenticated && <button type="button" onClick={signInWithGoogle}>SIGN IN</button>}
+                {!state.isAuthenticated && <Button size={1} onClick={signInWithGoogle}>SIGN IN</Button>}
                 {state.isAuthenticated && (
-                    <>
-                        <button type="button" onClick={() => auth.signOut()}>SIGN OUT</button>
-                        <LinkTo to="/admin/products">PRODUCTS</LinkTo>
-                    </>
+                    <Box>
+                        <Button size={1} onClick={() => auth.signOut()}>SIGN OUT</Button>
+                        <List>
+                            <LinkTo to="/admin/products">
+                                <ListItem>
+                                    PRODUCTS
+                                </ListItem>
+                            </LinkTo>
+                            <LinkTo to="/admin/products/add">
+                                <ListItem>
+                                    ADD PRODUCT
+                                </ListItem>
+                            </LinkTo>
+                        </List>
+                    </Box>
                 )}
             </ContentWrapper>
         </>

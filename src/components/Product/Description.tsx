@@ -1,4 +1,7 @@
 import React from 'react';
+import { Box } from '@modulz/radix';
+import parse from 'html-react-parser';
+
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
 const formatPrice = (price: number) => (price / 100)
@@ -11,7 +14,7 @@ const Description: React.FC<{ item: ItemInterface }> = ({ item, children }) => (
             <p>
                 {formatPrice(item.price)}
             </p>
-            <p>{item.description}</p>
+            <Box>{parse(item.description)}</Box>
         </div>
         <div>
             {children}

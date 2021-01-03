@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Img from '../../../shared/components/CloudinaryImage';
 import ContentWrapper from '../../../shared/components/ContentWrapper';
 import LinkTo from '../../../shared/components/LinkTo';
+import AdminMenu from '../../../shared/components/AdminMenu';
 import Decorative from '../../../shared/components/Decorative';
-import Img from '../../../shared/components/CloudinaryImage';
 
 import { useGetProducts } from '../../../services/products';
 
@@ -42,15 +43,14 @@ const Products: React.FC = () => {
     return !loading && items
         ? (
             <ContentWrapper>
-                <h1>Products admin</h1>
-                <LinkTo to="/admin">ADMIN MAIN</LinkTo>
+                <AdminMenu pageTitle="Edit products" />
                 <ContentWrapper>
                     <Gallery>
                         {items && items.map(({
                             title,
                             id,
-                            images,
                             productAssets,
+                            images,
                         }) => (
                             <div key={id}>
                                 <LinkTo to={`/admin/products/${id}`}>
