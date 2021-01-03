@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import {
     Button,
     Flex as FlexUnstyled,
     Text,
     Input,
-    Textarea,
+    // Textarea,
 } from '@modulz/radix';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import SunEditor from 'suneditor-react';
+import 'suneditor/dist/css/suneditor.min.css';
 
 import type { ItemInterface } from '../../../Interfaces/ProductItemInterface';
 
@@ -33,12 +35,21 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
     const {
         register,
         handleSubmit,
+        setValue,
         errors,
     } = useForm({
         resolver: yupResolver(schema),
     });
 
+    useEffect(() => {
+        register({ name: 'description' });
+    }, [register]);
+
     const onSubmit = handleSubmit(onSave);
+
+    const onEditorChange = (value: any) => {
+        setValue('description', value);
+    };
 
     return (
         <Flex>
@@ -58,13 +69,16 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
                 </label>
                 <label htmlFor="description">
                     <Text size={4}>Description</Text>
-                    <Textarea
+                    <SunEditor
                         placeholder="product description"
-                        id="description"
                         name="description"
-                        ref={register}
-                        size={1}
-                        defaultValue={item?.description}
+                        setOptions={{
+                            height: 200,
+                        }}
+                        setContents={item?.description}
+                        setDefaultStyle="font-family: Pavanam;"
+                        enableToolbar
+                        onChange={onEditorChange}
                     />
                     <p>{errors.description?.message}</p>
                 </label>
