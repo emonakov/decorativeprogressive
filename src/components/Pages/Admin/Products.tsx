@@ -23,6 +23,12 @@ const Gallery = styled.section`
     }
 `;
 
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center
+`;
+
 const ProdImg = styled(Img)`
     opacity: 0.9;
     /* border-bottom: ${({ theme }) => `${theme.menuBorderStyle} ${theme.menuBorderColor}`}; */
@@ -52,14 +58,14 @@ const Products: React.FC = () => {
                             productAssets,
                             images,
                         }) => (
-                            <div key={id}>
+                            <Container key={id}>
                                 <LinkTo to={`/admin/products/${id}`}>
                                     <ProdImg publicId={`${productAssets}${images.main}`} width="300" crop="scale" />
                                     <Decorative>
                                         <P>{title}</P>
                                     </Decorative>
                                 </LinkTo>
-                            </div>
+                            </Container>
                         ))}
                     </Gallery>
                 </ContentWrapper>

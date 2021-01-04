@@ -6,7 +6,12 @@ module.exports = {
     'airbnb',
     'plugin:import/typescript',
   ],
-  plugins: ['react', '@typescript-eslint'],
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
+  plugins: ['react', '@typescript-eslint', 'import'],
   env: {
     browser: true,
     jasmine: true,
@@ -40,6 +45,7 @@ module.exports = {
         'no-unused-vars': 'off',
         'no-undef': 'off',
         'react-hooks/exhaustive-deps': 'off',
+        'import/no-duplicates': 'off',
       },
     },
   ],

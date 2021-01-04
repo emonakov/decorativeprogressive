@@ -13,7 +13,7 @@ import * as yup from 'yup';
 import SunEditor from 'suneditor-react';
 import 'suneditor/dist/css/suneditor.min.css';
 
-import type { ItemInterface } from '../../../Interfaces/ProductItemInterface';
+import type { ItemInterface } from '~interfaces/ProductItemInterface';
 
 const Flex = styled(FlexUnstyled)`
     flex-direction: column;
