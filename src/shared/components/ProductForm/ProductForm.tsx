@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {
     Button,
@@ -14,6 +14,8 @@ import SunEditor from 'suneditor-react';
 import 'suneditor/dist/css/suneditor.min.css';
 
 import type { ItemInterface } from '~interfaces/ProductItemInterface';
+
+import { fetchPhotos, openUploadWidget } from '../../../services/cloudinary';
 
 const Flex = styled(FlexUnstyled)`
     flex-direction: column;
@@ -41,6 +43,8 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
         resolver: yupResolver(schema),
     });
 
+    const [images, setImages] = useState<Array<any>>([]);
+
     useEffect(() => {
         register({ name: 'description' });
     }, [register]);
@@ -50,6 +54,26 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
     const onEditorChange = (value: any) => {
         setValue('description', value);
     };
+
+    const beginUpload = (tag: any) => {
+        const uploadOptions = {
+            cloudName: 'decorativeprogressive',
+            tags: [tag],
+            uploadPreset: 'ml_default',
+        };
+
+        openUploadWidget(uploadOptions, (error: any, photos: any) => {
+            if (!error) {
+                if (photos.event === 'success') {
+                    setImages([...images, photos.info.public_id]);
+                }
+            }
+        });
+    };
+
+    useEffect(() => {
+        fetchPhotos('image', setImages);
+    }, []);
 
     return (
         <Flex>
@@ -94,6 +118,15 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
                     />
                     <p>{errors.price?.message}</p>
                 </label>
+                <Button
+                    size={1}
+                    variant="green"
+                    onClick={() => beginUpload('image')}
+                    pr="10px"
+                    type="button"
+                >
+                    Upload Images
+                </Button>
                 <Button size={1} variant="blue">SUBMIT</Button>
             </form>
         </Flex>

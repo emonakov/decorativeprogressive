@@ -35,7 +35,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "nodemon ./server"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
@@ -80,6 +81,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.0",
     "jest-styled-components": "^7.0.3",
+    "nodemon": "^2.0.6",
     "prettier": "^2.2.1"
   }
 }
