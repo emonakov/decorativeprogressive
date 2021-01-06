@@ -13,16 +13,14 @@ export const url = (publicId, options) => {
 };
 
 // @ts-ignore
-export const openUploadWidget = (options, callback) => {
+export const openUploadWidget = async (options, callback) => {
     const scOptions = Util.withSnakeCaseKeys({
         ...options,
-        async uploadSignature (fn: () => void, params: Object) {
-            await axios.post('/api/signUpload', params);
-            console.log(fn);
-            console.log(params);
+        async uploadSignature (fn: (signature: string) => void, params: Object) {
+            const signature = await axios.post('/api/signUpload', params);
+            fn(signature.data);
         },
     });
-    console.log(scOptions);
     // @ts-ignore
     window.cloudinary.openUploadWidget(scOptions, callback);
 };
@@ -30,7 +28,7 @@ export const openUploadWidget = (options, callback) => {
 // @ts-ignore
 export async function fetchPhotos(imageTag, setter) {
     const options = {
-        cloudName: 'decorativeprogressive',
+        cloudName: process.env.REACT_APP_CLOUDINARY_NAME,
         format: 'json',
         type: 'list',
         version: Math.ceil(new Date().getTime() / 1000),

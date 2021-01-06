@@ -57,8 +57,10 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
 
     const beginUpload = (tag: any) => {
         const uploadOptions = {
-            cloudName: 'decorativeprogressive',
+            cloudName: process.env.REACT_APP_CLOUDINARY_NAME,
             tags: [tag],
+            apiKey: process.env.REACT_APP_CLOUDINARY_API_KEY,
+            sources: ['local', 'url'],
             uploadPreset: 'ml_default',
         };
 

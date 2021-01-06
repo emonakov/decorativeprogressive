@@ -1,10 +1,15 @@
-const http = require('http'); // eslint-disable-line
+const express = require('express'); // eslint-disable-line
+require('dotenv').config({ path: '.env.local' }) // eslint-disable-line
 
-// create a server object:
-http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.write(JSON.stringify({
-    well: 'test1',
-  })); // write a response to the client
-  res.end(); // end the response
-}).listen(8080); // the server object listens on port 8080
+const handle = require('../api/signUpload'); // eslint-disable-line
+
+const app = express();
+const port = '8080';
+
+app.use(express.json());
+
+app.use('/', handle);
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
