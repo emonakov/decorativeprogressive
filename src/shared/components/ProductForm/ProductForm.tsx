@@ -38,7 +38,7 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
         register,
         handleSubmit,
         setValue,
-        // getValues,
+        getValues,
         errors,
     } = useForm({
         resolver: yupResolver(schema),
@@ -47,7 +47,6 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
     useEffect(() => {
         register({ name: 'description' });
         register({ name: 'images' });
-        setValue('images', item?.images ?? []);
     }, [register]);
 
     const onSubmit = handleSubmit(onSave);
@@ -56,19 +55,12 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
         setValue('description', value);
     };
 
-    const beginUpload = (tag: any) => {
-        const uploadOptions = {
-            cloudName: process.env.REACT_APP_CLOUDINARY_NAME,
-            tags: [tag],
-            apiKey: process.env.REACT_APP_CLOUDINARY_API_KEY,
-            sources: ['local', 'url'],
-            uploadPreset: 'ml_default',
-        };
-
-        openUploadWidget(uploadOptions, (error: any, photos: any) => {
+    const beginUpload = () => {
+        openUploadWidget((error: any, photos: any) => {
             if (!error) {
                 if (photos.event === 'success') {
-                    console.log(photos);
+                    const formImages = getValues('images') ?? [];
+                    setValue('images', [...formImages, photos.info.public_id]);
                 }
             }
         });
@@ -120,13 +112,14 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
                 <Button
                     size={1}
                     variant="green"
-                    onClick={() => beginUpload('image')}
+                    onClick={() => beginUpload()}
                     pr="10px"
                     type="button"
                 >
                     Upload Images
                 </Button>
                 <Button size={1} variant="blue">SUBMIT</Button>
+                <p>{errors.images?.message}</p>
             </form>
         </Flex>
     );

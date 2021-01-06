@@ -39,11 +39,6 @@ export const createProduct = async (params: Partial<ItemInterface>): Promise<str
 
     await productRef.set({
         ...params,
-        productAssets: 'assets/product_5/',
-        images: {
-            main: '41_vctoj8.jpg',
-            add: ['42_lxbrgi.jpg', '44_acxnmb.jpg'],
-        },
         createdAt: new Date(),
     });
 
