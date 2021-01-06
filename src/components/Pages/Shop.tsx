@@ -56,12 +56,11 @@ const ShopPage: React.FC = ({ children }) => {
                     {items && items.map(({
                         title,
                         id,
-                        images,
-                        productAssets,
+                        images: [image],
                     }) => (
                         <div key={id}>
                             <LinkTo to={`/shop/item/${id}`}>
-                                <ProdImg publicId={`${productAssets}${images.main}`} width="300" crop="scale" />
+                                <ProdImg publicId={image} width="300" crop="scale" />
                                 <Decorative>
                                     <P>{title}</P>
                                 </Decorative>

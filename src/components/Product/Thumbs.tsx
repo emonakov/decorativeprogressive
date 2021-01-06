@@ -39,23 +39,13 @@ const ThumbItem = styled.li`
 const Thumbs: React.FC<ThumbsInterface> = ({
     item,
     mainImg,
-    mainImageUrl,
     setMainImg,
 }) => (
     <ThumbContainer>
-        <ThumbItem>
-            <Thumb
-                publicId={`${mainImageUrl}`}
-                onClick={() => setMainImg(item.images.main)}
-                active={Number(mainImg === item.images.main)}
-                width="140"
-                crop="scale"
-            />
-        </ThumbItem>
-        {item.images.add.map((image) => (
+        {item.images.map((image) => (
             <ThumbItem key={image}>
                 <Thumb
-                    publicId={`${item.productAssets}${image}`}
+                    publicId={image}
                     onClick={() => setMainImg(image)}
                     active={Number(mainImg === image)}
                     width="140"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import {
     Button,
@@ -15,7 +15,7 @@ import 'suneditor/dist/css/suneditor.min.css';
 
 import type { ItemInterface } from '~interfaces/ProductItemInterface';
 
-import { fetchPhotos, openUploadWidget } from '../../../services/cloudinary';
+import { openUploadWidget } from '../../../services/cloudinary';
 
 const Flex = styled(FlexUnstyled)`
     flex-direction: column;
@@ -38,15 +38,16 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
         register,
         handleSubmit,
         setValue,
+        // getValues,
         errors,
     } = useForm({
         resolver: yupResolver(schema),
     });
 
-    const [images, setImages] = useState<Array<any>>([]);
-
     useEffect(() => {
         register({ name: 'description' });
+        register({ name: 'images' });
+        setValue('images', item?.images ?? []);
     }, [register]);
 
     const onSubmit = handleSubmit(onSave);
@@ -67,15 +68,11 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
         openUploadWidget(uploadOptions, (error: any, photos: any) => {
             if (!error) {
                 if (photos.event === 'success') {
-                    setImages([...images, photos.info.public_id]);
+                    console.log(photos);
                 }
             }
         });
     };
-
-    useEffect(() => {
-        fetchPhotos('image', setImages);
-    }, []);
 
     return (
         <Flex>

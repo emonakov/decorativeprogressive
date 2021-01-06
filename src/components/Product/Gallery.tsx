@@ -25,15 +25,15 @@ const ProdImg = styled(Img)`
 `;
 
 const GalleryWrapper: React.FC<{ item: ItemInterface }> = ({ item }) => {
-    const [mainImg, setMainImg] = useState(item.images.main);
+    const [mainImageUrl] = item.images;
+    const [mainImg, setMainImg] = useState(mainImageUrl);
     const [showLightbox, setShowLightbox] = useState(false);
-    const mainImageUrl = `${item.productAssets}${item.images.main}`;
 
     return (
         <>
             {showLightbox && (
                 <Lightbox
-                    mainSrc={getCloudinaryUrl(`${item.productAssets}${mainImg}`, { height: '864', crop: 'scale' })}
+                    mainSrc={getCloudinaryUrl(mainImg, { height: '864', crop: 'scale' })}
                     enableZoom={false}
                     onCloseRequest={() => setShowLightbox(false)}
                 />
@@ -46,7 +46,7 @@ const GalleryWrapper: React.FC<{ item: ItemInterface }> = ({ item }) => {
                     setMainImg={setMainImg}
                 />
                 <ProdImg
-                    publicId={`${item.productAssets}${mainImg}`}
+                    publicId={mainImg}
                     onClick={() => setShowLightbox(true)}
                     width="300"
                     crop="scale"
