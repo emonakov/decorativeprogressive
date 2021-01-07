@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { v1 as uuid } from 'uuid';
 import styled from 'styled-components';
 import {
@@ -23,7 +24,7 @@ import type { ItemInterface } from '~interfaces/ProductItemInterface';
 import Img from '../CloudinaryImage';
 import { openUploadWidget } from '../../../services/cloudinary';
 import { getCloudinaryUrl } from '../../utils/cloudinary';
-import { deleteProduct } from '../../../services/products';
+import { deleteProductImage, deleteProduct } from '../../../services/products';
 
 const Popover = PopoverPrimitive.Root;
 const PopoverTrigger = styled(PopoverPrimitive.Trigger)`
@@ -59,6 +60,7 @@ const IconDelete = styled(FontAwesomeIcon)`
 
 const FlexRow = styled(FlexUnstyled)`
     margin: ${({ theme }) => theme.paddingMd} 0;
+    flex-wrap: wrap;
 `;
 
 const Flex = styled(FlexUnstyled)`
@@ -107,6 +109,8 @@ const ProductForm: React.FC<AddProductInterface> = ({
     item,
     isEdit = false,
 }) => {
+    const { id: productId } = useParams<{ id: string }>();
+    const history = useHistory();
     const [photoIndex, setPhotoIndex] = useState<number>(0);
     const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
     const [images, setImages] = useState<string[]>();
@@ -150,6 +154,11 @@ const ProductForm: React.FC<AddProductInterface> = ({
                 if (photos.event === 'success') {
                     const formImages = getValues('images') ?? [];
                     setValue('images', [...formImages, photos.info.public_id]);
+                    if (isEdit) {
+                        onSave({
+                            images: [...formImages, photos.info.public_id],
+                        });
+                    }
                 }
             }
         });
@@ -160,12 +169,22 @@ const ProductForm: React.FC<AddProductInterface> = ({
         if (isEdit && savedImages.length <= 1) {
             return;
         }
-        const result = await deleteProduct(image);
+        const result = await deleteProductImage(image);
         if (result !== 'not ok') {
             const formImages = savedImages.filter((formImage: string) => image !== formImage);
             setValue('images', formImages);
             setImages(formImages);
+            if (isEdit) {
+                onSave({
+                    images: formImages,
+                });
+            }
         }
+    };
+
+    const onDeleteProduct = () => {
+        deleteProduct(productId);
+        history.push('/admin/products');
     };
 
     const getLightboxUrl = (url: string) => getCloudinaryUrl(url, { height: '864', crop: 'scale' });
@@ -264,6 +283,17 @@ const ProductForm: React.FC<AddProductInterface> = ({
                     Upload Images
                 </Button>
                 <Button size={1} variant="blue">SUBMIT</Button>
+                {isEdit && item && (
+                    <Popover>
+                        <PopoverTrigger>DELETE</PopoverTrigger>
+                        <PopoverContent>
+                            <PopoverBox>
+                                <div>DELETE THIS PRODUCT?</div>
+                                <Button variant="red" onClick={() => onDeleteProduct()}>YES</Button>
+                            </PopoverBox>
+                        </PopoverContent>
+                    </Popover>
+                )}
                 <p>{errors.images?.message}</p>
             </form>
         </Flex>

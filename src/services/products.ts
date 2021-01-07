@@ -47,8 +47,12 @@ export const createProduct = async (params: Partial<ItemInterface>, productId: s
     });
 };
 
-export const deleteProduct = async (publicId: string): Promise<any> => {
+export const deleteProductImage = async (publicId: string): Promise<any> => {
     const result = await axios.post('/api/destroy', { publicId });
 
     return result;
+};
+
+export const deleteProduct = async (publicId: string): Promise<void> => {
+    await db.collection('products').doc(publicId).delete();
 };
