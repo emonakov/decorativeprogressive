@@ -157,7 +157,7 @@ const ProductForm: React.FC<AddProductInterface> = ({
 
     const onDeleteImage = async (image: string) => {
         const savedImages = getValues('images');
-        if (isEdit && savedImages.length >= 1) {
+        if (isEdit && savedImages.length <= 1) {
             return;
         }
         const result = await deleteProduct(image);
