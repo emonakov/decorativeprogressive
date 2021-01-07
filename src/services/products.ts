@@ -34,13 +34,13 @@ export const saveProduct = async (productId: string, params: Partial<ItemInterfa
     return getProduct(productId);
 };
 
-export const createProduct = async (params: Partial<ItemInterface>): Promise<string> => {
-    const productRef = db.collection('products').doc();
+export const generateProductId = (): string => db.collection('products').doc().id;
+
+export const createProduct = async (params: Partial<ItemInterface>, productId: string): Promise<void> => {
+    const productRef = db.collection('products').doc(productId);
 
     await productRef.set({
         ...params,
         createdAt: new Date(),
     });
-
-    return productRef.id;
 };

@@ -5,21 +5,22 @@ import AdminMenu from '../../../shared/components/AdminMenu';
 import ContentWrapper from '../../../shared/components/ContentWrapper';
 import ProductForm from '../../../shared/components/ProductForm';
 
-import { createProduct } from '../../../services/products';
+import { createProduct, generateProductId } from '../../../services/products';
 import type { ItemInterface } from '../../../Interfaces/ProductItemInterface';
 
 const AddProduct: React.FC = () => {
     const history = useHistory();
+    const productId = generateProductId();
 
     const onSubmit = async (form: Partial<ItemInterface>) => {
-        const productId = await createProduct(form);
+        await createProduct(form, productId);
         history.push(`/admin/products/${productId}`);
     };
 
     return (
         <ContentWrapper>
             <AdminMenu pageTitle="Add product" />
-            <ProductForm onSave={onSubmit} />
+            <ProductForm onSave={onSubmit} productId={productId} />
         </ContentWrapper>
     );
 };

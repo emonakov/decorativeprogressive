@@ -23,6 +23,7 @@ const Flex = styled(FlexUnstyled)`
 
 interface AddProductInterface {
     onSave: (product: Partial<ItemInterface>) => void;
+    productId: string,
     formTitle?: string;
     item?: ItemInterface;
 }
@@ -33,7 +34,12 @@ const schema = yup.object().shape({
     price: yup.number().positive().integer().required(),
 });
 
-const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD NEW PRODUCT', item }) => {
+const ProductForm: React.FC<AddProductInterface> = ({
+    onSave,
+    productId,
+    formTitle = 'ADD NEW PRODUCT',
+    item,
+}) => {
     const {
         register,
         handleSubmit,
@@ -63,7 +69,7 @@ const ProductForm: React.FC<AddProductInterface> = ({ onSave, formTitle = 'ADD N
                     setValue('images', [...formImages, photos.info.public_id]);
                 }
             }
-        });
+        }, productId);
     };
 
     return (
