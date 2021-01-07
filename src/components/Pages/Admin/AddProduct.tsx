@@ -20,7 +20,7 @@ const AddProduct: React.FC = () => {
     return (
         <ContentWrapper>
             <AdminMenu pageTitle="Add product" />
-            <ProductForm onSave={onSubmit} productId={productId} />
+            <ProductForm onSave={onSubmit} />
         </ContentWrapper>
     );
 };

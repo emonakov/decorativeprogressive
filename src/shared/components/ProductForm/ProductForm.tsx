@@ -23,6 +23,7 @@ import type { ItemInterface } from '~interfaces/ProductItemInterface';
 import Img from '../CloudinaryImage';
 import { openUploadWidget } from '../../../services/cloudinary';
 import { getCloudinaryUrl } from '../../utils/cloudinary';
+import { deleteProduct } from '../../../services/products';
 
 const Popover = PopoverPrimitive.Root;
 const PopoverTrigger = styled(PopoverPrimitive.Trigger)`
@@ -89,7 +90,6 @@ const DeleteContainer = styled.div`
 interface AddProductInterface {
     onSave: (product: Partial<ItemInterface>) => void;
     isEdit?: boolean;
-    productId: string;
     formTitle?: string;
     item?: ItemInterface;
 }
@@ -103,7 +103,6 @@ const schema = yup.object().shape({
 
 const ProductForm: React.FC<AddProductInterface> = ({
     onSave,
-    productId,
     formTitle = 'ADD NEW PRODUCT',
     item,
     isEdit = false,
@@ -153,13 +152,20 @@ const ProductForm: React.FC<AddProductInterface> = ({
                     setValue('images', [...formImages, photos.info.public_id]);
                 }
             }
-        }, productId);
+        });
     };
 
-    const onDeleteImage = (image: string) => {
-        const formImages = getValues('images').filter((formImage: string) => image !== formImage);
-        setValue('images', formImages);
-        setImages(formImages);
+    const onDeleteImage = async (image: string) => {
+        const savedImages = getValues('images');
+        if (isEdit && savedImages.length >= 1) {
+            return;
+        }
+        const result = await deleteProduct(image);
+        if (result !== 'not ok') {
+            const formImages = savedImages.filter((formImage: string) => image !== formImage);
+            setValue('images', formImages);
+            setImages(formImages);
+        }
     };
 
     const getLightboxUrl = (url: string) => getCloudinaryUrl(url, { height: '864', crop: 'scale' });

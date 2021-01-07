@@ -1,3 +1,5 @@
+import axios from 'redaxios';
+
 import { StateInterface } from '../shared/components/StateProvider';
 import { ItemInterface } from '../Interfaces/ProductItemInterface';
 import { db } from '../firebase/firebase.utils';
@@ -43,4 +45,10 @@ export const createProduct = async (params: Partial<ItemInterface>, productId: s
         ...params,
         createdAt: new Date(),
     });
+};
+
+export const deleteProduct = async (publicId: string): Promise<any> => {
+    const result = await axios.post('/api/destroy', { publicId });
+
+    return result;
 };

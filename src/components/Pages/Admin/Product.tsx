@@ -29,7 +29,6 @@ const Product: React.FC<ProductProps> = ({ match }) => {
                 formTitle={item.title}
                 item={item}
                 onSave={onSubmit}
-                productId={String(item.id)}
                 isEdit
             />
         </ContentWrapper>
