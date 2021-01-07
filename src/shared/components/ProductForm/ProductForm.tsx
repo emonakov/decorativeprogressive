@@ -6,7 +6,9 @@ import {
     Flex as FlexUnstyled,
     Text,
     Input,
+    Box as BoxUnstyled,
 } from '@modulz/radix';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -29,6 +31,11 @@ const Flex = styled(FlexUnstyled)`
     flex-direction: column;
 `;
 
+const Box = styled(BoxUnstyled)`
+    position: relative;
+    margin-right: ${({ theme }) => theme.paddingMd};
+`;
+
 const Thumb = styled(Img)`
     opacity: 0.9;
     width: ${({ theme }) => theme.galleryThumbWidth};
@@ -36,7 +43,13 @@ const Thumb = styled(Img)`
     box-sizing: border-box;
     border: none;
     cursor: pointer;
-    margin-right: ${({ theme }) => theme.paddingMd};
+`;
+
+const Icon = styled(FontAwesomeIcon)`
+    position: absolute;
+    right: -15px;
+    height: 15px;
+    cursor: pointer;
 `;
 
 interface AddProductInterface {
@@ -157,29 +170,30 @@ const ProductForm: React.FC<AddProductInterface> = ({
                 <label htmlFor="images">
                     <FlexRow>
                         {images && images.map((image: string) => (
-                            <React.Fragment key={uuid()}>
+                            <Box key={uuid()}>
                                 <Thumb
                                     publicId={image}
                                     width="140"
                                     crop="scale"
                                     onClick={() => setIsLightboxOpen(true)}
                                 />
-                                {isLightboxOpen && (
-                                    <Lightbox
-                                        mainSrc={getLightboxUrl(images[photoIndex])}
-                                        nextSrc={getLightboxUrl(images[(photoIndex + 1) % images.length])}
-                                        prevSrc={
-                                            getLightboxUrl(images[(photoIndex + images.length - 1) % images.length])
-                                        }
-                                        onCloseRequest={() => setIsLightboxOpen(false)}
-                                        onMovePrevRequest={
-                                            () => setPhotoIndex((photoIndex + images.length - 1) % images.length)
-                                        }
-                                        onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % images.length)}
-                                    />
-                                )}
-                            </React.Fragment>
+                                <Icon icon={['fas', 'trash']} size="2x" />
+                            </Box>
                         ))}
+                        {images && isLightboxOpen && (
+                            <Lightbox
+                                mainSrc={getLightboxUrl(images[photoIndex])}
+                                nextSrc={getLightboxUrl(images[(photoIndex + 1) % images.length])}
+                                prevSrc={
+                                    getLightboxUrl(images[(photoIndex + images.length - 1) % images.length])
+                                }
+                                onCloseRequest={() => setIsLightboxOpen(false)}
+                                onMovePrevRequest={
+                                    () => setPhotoIndex((photoIndex + images.length - 1) % images.length)
+                                }
+                                onMoveNextRequest={() => setPhotoIndex((photoIndex + 1) % images.length)}
+                            />
+                        )}
                     </FlexRow>
                 </label>
                 <Button
