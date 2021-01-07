@@ -30,6 +30,7 @@ const Product: React.FC<ProductProps> = ({ match }) => {
                 item={item}
                 onSave={onSubmit}
                 productId={String(item.id)}
+                isEdit
             />
         </ContentWrapper>
     )) || null;

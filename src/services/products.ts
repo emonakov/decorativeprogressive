@@ -6,7 +6,7 @@ import { useService } from '../shared/hooks/useService';
 const getProducts = async (): Promise<ItemInterface[]> => {
     const products: Array<any> = [];
     const productsRef = db.collection('products');
-    const snapshot = await productsRef.get();
+    const snapshot = await productsRef.orderBy('createdAt', 'desc').get();
     snapshot.forEach((doc) => {
         products.push({ id: doc.id, ...doc.data() });
     });
