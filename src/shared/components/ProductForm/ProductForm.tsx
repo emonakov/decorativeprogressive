@@ -63,15 +63,19 @@ const ProductForm: React.FC<AddProductInterface> = ({
 }) => {
     const [photoIndex, setPhotoIndex] = useState<number>(0);
     const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
+    const [images, setImages] = useState<string[]>();
     const {
         register,
         handleSubmit,
         setValue,
         getValues,
         errors,
+        watch,
     } = useForm({
         resolver: yupResolver(schema),
     });
+
+    const watchImages = watch('images');
 
     useEffect(() => {
         register({ name: 'description' });
@@ -84,8 +88,11 @@ const ProductForm: React.FC<AddProductInterface> = ({
         }
     }, [isEdit, item]);
 
+    useEffect(() => {
+        setImages(getValues('images'));
+    }, [watchImages]);
+
     const onSubmit = handleSubmit(onSave);
-    const images = item?.images ?? getValues('images');
 
     const onEditorChange = (value: any) => {
         setValue('description', value);

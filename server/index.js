@@ -8,7 +8,8 @@ const port = '8080';
 
 app.use(express.json());
 
-app.use('/', handle);
+app.use('/api/signUpload', handle);
+app.use('/api/destroy', (req, res) => res.json('ok'));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
