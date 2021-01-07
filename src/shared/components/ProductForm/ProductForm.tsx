@@ -8,6 +8,7 @@ import {
     Input,
     Box as BoxUnstyled,
 } from '@modulz/radix';
+import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -22,6 +23,38 @@ import type { ItemInterface } from '~interfaces/ProductItemInterface';
 import Img from '../CloudinaryImage';
 import { openUploadWidget } from '../../../services/cloudinary';
 import { getCloudinaryUrl } from '../../utils/cloudinary';
+
+const Popover = PopoverPrimitive.Root;
+const PopoverTrigger = styled(PopoverPrimitive.Trigger)`
+    background: none;
+    outline: none;
+    border: none;
+    height: 15px;
+    cursor: pointer;
+`;
+const PopoverContent = styled(PopoverPrimitive.Content)`
+    background-color: white;
+    overflow: hidden;
+
+    &:focus {
+        outline: none;
+    }
+`;
+
+const PopoverBox = styled(BoxUnstyled)`
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    min-height: 70px;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const IconDelete = styled(FontAwesomeIcon)`
+    width: ${({ theme }) => theme.paddingMd};
+    height: ${({ theme }) => theme.paddingMd};
+`;
 
 const FlexRow = styled(FlexUnstyled)`
     margin: ${({ theme }) => theme.paddingMd} 0;
@@ -45,11 +78,12 @@ const Thumb = styled(Img)`
     cursor: pointer;
 `;
 
-const Icon = styled(FontAwesomeIcon)`
+const DeleteContainer = styled.div`
     position: absolute;
     right: -15px;
     height: 15px;
     cursor: pointer;
+    display: inline-block;
 `;
 
 interface AddProductInterface {
@@ -122,6 +156,12 @@ const ProductForm: React.FC<AddProductInterface> = ({
         }, productId);
     };
 
+    const onDeleteImage = (image: string) => {
+        const formImages = getValues('images').filter((formImage: string) => image !== formImage);
+        setValue('images', formImages);
+        setImages(formImages);
+    };
+
     const getLightboxUrl = (url: string) => getCloudinaryUrl(url, { height: '864', crop: 'scale' });
 
     return (
@@ -177,7 +217,19 @@ const ProductForm: React.FC<AddProductInterface> = ({
                                     crop="scale"
                                     onClick={() => setIsLightboxOpen(true)}
                                 />
-                                <Icon icon={['fas', 'trash']} size="2x" />
+                                <DeleteContainer>
+                                    <Popover>
+                                        <PopoverTrigger>
+                                            <IconDelete icon={['fas', 'trash']} size="2x" />
+                                        </PopoverTrigger>
+                                        <PopoverContent>
+                                            <PopoverBox>
+                                                <div>DELETE THIS IMAGE?</div>
+                                                <Button variant="red" onClick={() => onDeleteImage(image)}>YES</Button>
+                                            </PopoverBox>
+                                        </PopoverContent>
+                                    </Popover>
+                                </DeleteContainer>
                             </Box>
                         ))}
                         {images && isLightboxOpen && (
