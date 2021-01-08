@@ -3,9 +3,6 @@ export interface ItemInterface {
     description: string;
     title: string;
     productAssets: string;
-    images: {
-        main: string;
-        add: string[];
-    };
+    images: string[];
     price: number;
 }

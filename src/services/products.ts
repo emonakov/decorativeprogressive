@@ -1,3 +1,5 @@
+import axios from 'redaxios';
+
 import { StateInterface } from '../shared/components/StateProvider';
 import { ItemInterface } from '../Interfaces/ProductItemInterface';
 import { db } from '../firebase/firebase.utils';
@@ -6,7 +8,7 @@ import { useService } from '../shared/hooks/useService';
 const getProducts = async (): Promise<ItemInterface[]> => {
     const products: Array<any> = [];
     const productsRef = db.collection('products');
-    const snapshot = await productsRef.get();
+    const snapshot = await productsRef.orderBy('createdAt', 'desc').get();
     snapshot.forEach((doc) => {
         products.push({ id: doc.id, ...doc.data() });
     });
@@ -34,18 +36,20 @@ export const saveProduct = async (productId: string, params: Partial<ItemInterfa
     return getProduct(productId);
 };
 
-export const createProduct = async (params: Partial<ItemInterface>): Promise<string> => {
-    const productRef = db.collection('products').doc();
+export const generateProductId = (): string => db.collection('products').doc().id;
+
+export const createProduct = async (params: Partial<ItemInterface>, productId: string): Promise<void> => {
+    const productRef = db.collection('products').doc(productId);
 
     await productRef.set({
         ...params,
-        productAssets: 'assets/product_5/',
-        images: {
-            main: '41_vctoj8.jpg',
-            add: ['42_lxbrgi.jpg', '44_acxnmb.jpg'],
-        },
         createdAt: new Date(),
     });
-
-    return productRef.id;
 };
+
+export const deleteProductImage = (publicId: string): Promise<any> => axios.post('/api/destroy', { publicId });
+
+export const deleteProduct = async (publicId: string): Promise<void> => db
+    .collection('products')
+    .doc(publicId)
+    .delete();

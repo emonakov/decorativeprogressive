@@ -1,6 +1,6 @@
 import { Cloudinary } from 'cloudinary-core';
 
-const cl = new Cloudinary({ cloud_name: 'decorativeprogressive' });
+const cl = new Cloudinary({ cloud_name: process.env.REACT_APP_CLOUDINARY_NAME });
 
 export const getCloudinaryUrl = (
     publicId: string,

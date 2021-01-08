@@ -55,12 +55,11 @@ const Products: React.FC = () => {
                         {items && items.map(({
                             title,
                             id,
-                            productAssets,
-                            images,
+                            images: [image],
                         }) => (
                             <Container key={id}>
                                 <LinkTo to={`/admin/products/${id}`}>
-                                    <ProdImg publicId={`${productAssets}${images.main}`} width="300" crop="scale" />
+                                    <ProdImg publicId={image} width="300" crop="scale" />
                                     <Decorative>
                                         <P>{title}</P>
                                     </Decorative>
