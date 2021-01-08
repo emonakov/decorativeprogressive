@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 
 const formatPrice = (price: number) => (price / 100)
-    .toLocaleString('en-US', { style: 'currency', currency: 'EUR', maximumSignificantDigits: 2 });
+    .toLocaleString('en-US', { style: 'currency', currency: 'EUR', maximumSignificantDigits: 21 });
 
 const Description: React.FC<{ item: ItemInterface }> = ({ item, children }) => (
     <div>

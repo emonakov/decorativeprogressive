@@ -182,9 +182,15 @@ const ProductForm: React.FC<AddProductInterface> = ({
         }
     };
 
-    const onDeleteProduct = () => {
-        deleteProduct(productId);
-        history.push('/admin/products');
+    const onDeleteProduct = async () => {
+        if (item) {
+            const deleteImagePromises: Array<Promise<any>> = item.images.map(
+                (image: string) => deleteProductImage(image),
+            );
+            await Promise.allSettled(deleteImagePromises);
+            await deleteProduct(productId);
+            history.push('/admin/products');
+        }
     };
 
     const getLightboxUrl = (url: string) => getCloudinaryUrl(url, { height: '864', crop: 'scale' });

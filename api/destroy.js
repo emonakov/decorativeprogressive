@@ -10,12 +10,10 @@ const CLOUDINARY_CONFIG = {
 cloudinary.config(CLOUDINARY_CONFIG);
 
 module.exports = async (req, res) => {
-  const signature = await cloudinary
-    .utils
-    .api_sign_request(req.body, CLOUDINARY_CONFIG.api_secret);
-
   try {
-    const result = await cloudinary.v2.uploader.destroy(req.body.publicId, signature);
+    const result = await cloudinary.v2.uploader.destroy(
+      req.body.publicId, { invalidate: true },
+    );
     res.send(result);
   } catch (e) {
     res.send('not ok');
