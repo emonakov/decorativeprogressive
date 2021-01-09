@@ -91,7 +91,6 @@ const DeleteContainer = styled.div`
 
 interface AddProductInterface {
     onSave: (product: Partial<ItemInterface>) => void;
-    isEdit?: boolean;
     formTitle?: string;
     item?: ItemInterface;
 }
@@ -107,7 +106,6 @@ const ProductForm: React.FC<AddProductInterface> = ({
     onSave,
     formTitle = 'ADD NEW PRODUCT',
     item,
-    isEdit = false,
 }) => {
     const { id: productId } = useParams<{ id: string }>();
     const history = useHistory();
@@ -133,10 +131,8 @@ const ProductForm: React.FC<AddProductInterface> = ({
     }, [register]);
 
     useEffect(() => {
-        if (isEdit) {
-            setValue('images', item?.images);
-        }
-    }, [isEdit, item]);
+        setValue('images', item?.images);
+    }, [item]);
 
     useEffect(() => {
         setImages(getValues('images'));
@@ -154,11 +150,9 @@ const ProductForm: React.FC<AddProductInterface> = ({
                 if (photos.event === 'success') {
                     const formImages = getValues('images') ?? [];
                     setValue('images', [...formImages, photos.info.public_id]);
-                    if (isEdit) {
-                        onSave({
-                            images: [...formImages, photos.info.public_id],
-                        });
-                    }
+                    onSave({
+                        images: [...formImages, photos.info.public_id],
+                    });
                 }
             }
         });
@@ -166,7 +160,7 @@ const ProductForm: React.FC<AddProductInterface> = ({
 
     const onDeleteImage = async (image: string) => {
         const savedImages = getValues('images');
-        if (isEdit && savedImages.length <= 1) {
+        if (savedImages.length <= 1) {
             return;
         }
         const result = await deleteProductImage(image);
@@ -174,20 +168,20 @@ const ProductForm: React.FC<AddProductInterface> = ({
             const formImages = savedImages.filter((formImage: string) => image !== formImage);
             setValue('images', formImages);
             setImages(formImages);
-            if (isEdit) {
-                onSave({
-                    images: formImages,
-                });
-            }
+            onSave({
+                images: formImages,
+            });
         }
     };
 
     const onDeleteProduct = async () => {
         if (item) {
-            const deleteImagePromises: Array<Promise<any>> = item.images.map(
-                (image: string) => deleteProductImage(image),
-            );
-            await Promise.allSettled(deleteImagePromises);
+            if (item.images) {
+                const deleteImagePromises: Array<Promise<any>> = item.images.map(
+                    (image: string) => deleteProductImage(image),
+                );
+                await Promise.allSettled(deleteImagePromises);
+            }
             await deleteProduct(productId);
             history.push('/admin/products');
         }
@@ -289,7 +283,7 @@ const ProductForm: React.FC<AddProductInterface> = ({
                     Upload Images
                 </Button>
                 <Button size={1} variant="blue">SUBMIT</Button>
-                {isEdit && item && (
+                {item && (
                     <Popover>
                         <PopoverTrigger>DELETE</PopoverTrigger>
                         <PopoverContent>

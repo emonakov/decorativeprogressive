@@ -3,11 +3,12 @@ import React, { useContext, createContext, useReducer } from 'react';
 import { ItemInterface } from '../../../Interfaces/ProductItemInterface';
 
 export interface StateInterface {
-    items?: ItemInterface[]
-    isAuthenticated?: boolean
-    item?: ItemInterface
-    loading?: boolean
-    error?: string[]
+    items?: ItemInterface[];
+    isAuthenticated?: boolean;
+    item?: ItemInterface;
+    loading?: boolean;
+    error?: string[];
+    adminItems?: Partial<ItemInterface>[];
 }
 
 interface ActionInterface {

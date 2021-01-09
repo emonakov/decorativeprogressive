@@ -8,6 +8,17 @@ import { useService } from '../shared/hooks/useService';
 const getProducts = async (): Promise<ItemInterface[]> => {
     const products: Array<any> = [];
     const productsRef = db.collection('products');
+    const snapshot = await productsRef.where('isNew', '==', false).orderBy('createdAt', 'desc').get();
+    snapshot.forEach((doc) => {
+        products.push({ id: doc.id, ...doc.data() });
+    });
+
+    return products;
+};
+
+const getProductsAdmin = async (): Promise<ItemInterface[]> => {
+    const products: Array<any> = [];
+    const productsRef = db.collection('products');
     const snapshot = await productsRef.orderBy('createdAt', 'desc').get();
     snapshot.forEach((doc) => {
         products.push({ id: doc.id, ...doc.data() });
@@ -24,6 +35,7 @@ const getProduct = async (productId: string): Promise<ItemInterface> => {
 };
 
 export const useGetProducts = (): StateInterface => useService(getProducts, 'items');
+export const useGetProductsAdmin = (): StateInterface => useService(getProductsAdmin, 'adminItems');
 export const useGetProduct = (productId: string): StateInterface => useService(getProduct, 'item', productId);
 
 export const saveProduct = async (productId: string, params: Partial<ItemInterface>): Promise<ItemInterface> => {
@@ -31,6 +43,7 @@ export const saveProduct = async (productId: string, params: Partial<ItemInterfa
     await productRef.set({
         ...params,
         updatedAt: new Date(),
+        isNew: false,
     }, { merge: true });
 
     return getProduct(productId);
@@ -44,6 +57,7 @@ export const createProduct = async (params: Partial<ItemInterface>, productId: s
     await productRef.set({
         ...params,
         createdAt: new Date(),
+        isNew: true,
     });
 };
 

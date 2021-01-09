@@ -7,7 +7,7 @@ import LinkTo from '../../../shared/components/LinkTo';
 import AdminMenu from '../../../shared/components/AdminMenu';
 import Decorative from '../../../shared/components/Decorative';
 
-import { useGetProducts } from '../../../services/products';
+import { useGetProductsAdmin } from '../../../services/products';
 
 const Gallery = styled.section`
     display: grid;
@@ -44,7 +44,7 @@ const P = styled.p`
 `;
 
 const Products: React.FC = () => {
-    const { items, loading } = useGetProducts();
+    const { adminItems: items, loading } = useGetProductsAdmin();
 
     return !loading && items
         ? (
@@ -53,13 +53,13 @@ const Products: React.FC = () => {
                 <ContentWrapper>
                     <Gallery>
                         {items && items.map(({
-                            title,
+                            title = 'EMPTY PRODUCT',
                             id,
-                            images: [image],
+                            images,
                         }) => (
                             <Container key={id}>
                                 <LinkTo to={`/admin/products/${id}`}>
-                                    <ProdImg publicId={image} width="300" crop="scale" />
+                                    {images && <ProdImg publicId={images[0]} width="300" crop="scale" />}
                                     <Decorative>
                                         <P>{title}</P>
                                     </Decorative>
