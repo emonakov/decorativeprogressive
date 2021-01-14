@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import { useToasts } from 'react-toast-notifications';
 import { v1 as uuid } from 'uuid';
 import styled from 'styled-components';
 import {
@@ -107,6 +108,7 @@ const ProductForm: React.FC<AddProductInterface> = ({
     formTitle = 'ADD NEW PRODUCT',
     item,
 }) => {
+    const { addToast } = useToasts();
     const { id: productId } = useParams<{ id: string }>();
     const history = useHistory();
     const [photoIndex, setPhotoIndex] = useState<number>(0);
@@ -175,15 +177,20 @@ const ProductForm: React.FC<AddProductInterface> = ({
     };
 
     const onDeleteProduct = async () => {
-        if (item) {
-            if (item.images) {
-                const deleteImagePromises: Array<Promise<any>> = item.images.map(
-                    (image: string) => deleteProductImage(image),
-                );
-                await Promise.allSettled(deleteImagePromises);
+        try {
+            if (item) {
+                if (item.images) {
+                    const deleteImagePromises: Array<Promise<any>> = item.images.map(
+                        (image: string) => deleteProductImage(image),
+                    );
+                    await Promise.allSettled(deleteImagePromises);
+                }
+                await deleteProduct(productId);
+                addToast('Product deleted', { appearance: 'success' });
+                history.push('/admin/products');
             }
-            await deleteProduct(productId);
-            history.push('/admin/products');
+        } catch (err) {
+            addToast(err.message, { appearance: 'error' });
         }
     };
 

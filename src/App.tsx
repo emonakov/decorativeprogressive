@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { CloudinaryContext } from 'cloudinary-react';
 import { RadixProvider } from '@modulz/radix';
+import { ToastProvider } from 'react-toast-notifications';
 
 import './shared/libs/FontAwesomeLib';
 import { theme } from './config';
@@ -27,21 +28,23 @@ const AdminProduct = lazy(() => import('./components/Pages/Admin/Product'));
 const AdminAddProduct = lazy(() => import('./components/Pages/Admin/AddProduct'));
 
 const AuthenticatedRoutes = () => (
-    <Switch>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/shop" exact component={ShopPage} />
-        <Route
-            path={'/shop/item/:id(\\w+)'}
-            strict
-            component={ProductPage}
-        />
-        <Route path="/signedin" exact component={() => <h1>BLA</h1>} />
-        <Route path="/admin" exact component={AdminMain} />
-        <Route path="/admin/products" exact component={AdminProducts} />
-        <Route path="/admin/products/add" exact component={AdminAddProduct} />
-        <Route path={'/admin/products/:id(\\w+)'} exact component={AdminProduct} />
-        <Route component={NotFoundPage} />
-    </Switch>
+    <ToastProvider autoDismiss>
+        <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/shop" exact component={ShopPage} />
+            <Route
+                path={'/shop/item/:id(\\w+)'}
+                strict
+                component={ProductPage}
+            />
+            <Route path="/signedin" exact component={() => <h1>BLA</h1>} />
+            <Route path="/admin" exact component={AdminMain} />
+            <Route path="/admin/products" exact component={AdminProducts} />
+            <Route path="/admin/products/add" exact component={AdminAddProduct} />
+            <Route path={'/admin/products/:id(\\w+)'} exact component={AdminProduct} />
+            <Route component={NotFoundPage} />
+        </Switch>
+    </ToastProvider>
 );
 
 const UnauthenticatedRoutes = () => (

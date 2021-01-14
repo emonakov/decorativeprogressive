@@ -48,6 +48,7 @@ const stateReducer = (state: StateInterface, {
                 ...state,
                 ...payload,
                 loading: false,
+                errors: null,
             };
         case 'CONTENT_FAILURE':
             return {
