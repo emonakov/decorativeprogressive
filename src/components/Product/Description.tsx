@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@modulz/radix';
-import parse from 'html-react-parser';
+import parse from 'react-html-parser';
 
 import { ItemInterface } from '../../Interfaces/ProductItemInterface';
 

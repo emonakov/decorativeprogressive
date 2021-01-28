@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PayPalScriptProvider, PayPalButtons, FUNDING } from '@paypal/react-paypal-js';
 
 import ContentWrapper from '../../shared/components/ContentWrapper';
-// import BuyButton from '../../shared/components/PayPal';
+import BuyButton from '../../shared/components/PayPal';
 import Gallery from '../Product/Gallery';
 import Description from '../Product/Description';
 import { HomePageHero } from '../Heroes';
@@ -29,9 +28,6 @@ const ContentWrapperProduct = styled(ContentWrapper)`
 // `;
 
 const ProductPage: React.FC<ProductProps> = ({ match }) => {
-    const paypalClientId = process.env.REACT_APP_PAYPAL_CLIENT_ID as string;
-    const test = process.env.REACT_APP_TEST_THING;
-    console.log(test);
     const { loading, item } = useGetProduct(match.params.id);
 
     return (
@@ -47,10 +43,7 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
                     <ContentWrapperProduct>
                         <Gallery item={item} />
                         <Description item={item}>
-                            <PayPalScriptProvider options={{ 'client-id': paypalClientId }}>
-                                <PayPalButtons fundingSource={FUNDING.PAYPAL} />
-                            </PayPalScriptProvider>
-                            {/* <BuyButton item={item} /> */}
+                            <BuyButton item={item} />
                         </Description>
                     </ContentWrapperProduct>
                 </ContentWrapper>
