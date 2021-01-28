@@ -1,24 +1,8 @@
 import 'styled-components';
 
+import theme from '../config/theme'
+
+type LocalTheme = typeof theme
 declare module 'styled-components' {
-    export interface DefaultTheme {
-        mainFont: string;
-        contentPadding: string;
-        paddingMd: string;
-        paddingMdOffsetSm: string;
-        paddingSm: string;
-        frameBackground: string;
-        textColor: string;
-        frameBorderColor: string;
-        linkHoverColor: string;
-        frameBorderHoverColor: string;
-        menuBorderColor: string;
-        menuBorderHeight: string;
-        menuBorderStyle: string;
-        darkBorderColor: string;
-        galleryThumbWidth: string;
-        buttonColor: string;
-        ButtonActiveColor: string;
-        wrapperBackground: string;
-    }
+    export interface DefaultTheme extends LocalTheme { }
 }

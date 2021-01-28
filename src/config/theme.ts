@@ -1,7 +1,6 @@
-import { DefaultTheme } from 'styled-components';
 import colors from './colors';
 
-const theme: DefaultTheme = {
+const theme = {
     mainFont: 'Julius Sans One',
     contentPadding: '20px',
     paddingSm: '5px',
