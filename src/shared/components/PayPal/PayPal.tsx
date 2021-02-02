@@ -30,20 +30,22 @@ const BuyButton: React.FC<{ item: ItemInterface }> = ({ item: { title, price, id
                         amount: {
                             currency_code: 'EUR',
                             value: String((price / 100).toLocaleString()),
-                            // eslint-disable-next-line
-                            // @ts-ignore
                             breakdown: {
                                 item_total: { currency_code: 'EUR', value: String((price / 100).toLocaleString()) },
                                 tax_total: { currency_code: 'EUR', value: '0' },
+                                shipping: { currency_code: 'EUR', value: '0' },
+                                handling: { currency_code: 'EUR', value: '0' },
+                                insurance: { currency_code: 'EUR', value: '0' },
+                                shipping_discount: { currency_code: 'EUR', value: '0' },
+                                discount: { currency_code: 'EUR', value: '0' },
                             },
                         },
-                        // eslint-disable-next-line
-                        // @ts-ignore
                         items: [{
                             name: title,
                             quantity: '1',
                             unit_amount: { currency_code: 'EUR', value: String((price / 100).toLocaleString()) },
                             sku: String(id),
+                            category: 'PHYSICAL_GOODS',
                         }],
                     }],
                 })}
