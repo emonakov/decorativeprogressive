@@ -29,9 +29,12 @@ const getProductsAdmin = async (): Promise<ItemInterface[]> => {
 
 const getProduct = async (productId: string): Promise<ItemInterface> => {
     const productRef = db.collection('products').doc(productId);
-    const product = (await productRef.get()).data() as ItemInterface;
+    const product = (await productRef.get()).data();
 
-    return product;
+    return {
+        id: productRef.id,
+        ...product,
+    } as ItemInterface;
 };
 
 export const useGetProducts = (): StateInterface => useService(getProducts, 'items');
