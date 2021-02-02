@@ -12,7 +12,7 @@ const PayPalContainer = styled.div`
     margin: ${({ theme }) => theme.paddingMd} 0;
 `;
 
-const BuyButton: React.FC<{ item: ItemInterface }> = ({ item: { title, price, id } }) => ( // eslint-disable-line
+const BuyButton: React.FC<{ item: ItemInterface }> = ({ item: { title, price, id } }) => (
     <PayPalContainer>
         <PayPalScriptProvider
             options={{
@@ -25,7 +25,7 @@ const BuyButton: React.FC<{ item: ItemInterface }> = ({ item: { title, price, id
                 eslint-disable-next-line
                 onApprove={(data, actions) => actions
                     .order.capture({ test: 'test' }).then((details) => console.log(details))}
-                createOrder={(data, actions) => actions.order.create({ // eslint-disable-line
+                createOrder={(data, actions) => actions.order.create({
                     purchase_units: [{
                         amount: {
                             currency_code: 'EUR',
