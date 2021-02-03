@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 import ContentWrapper from '../../shared/components/ContentWrapper';
 import BuyButton from '../../shared/components/PayPal';
@@ -43,7 +44,14 @@ const ProductPage: React.FC<ProductProps> = ({ match }) => {
                     <ContentWrapperProduct>
                         <Gallery item={item} />
                         <Description item={item}>
-                            <BuyButton item={item} />
+                            <PayPalScriptProvider
+                                options={{
+                                    'client-id': process.env.REACT_APP_PAYPAL_CLIENT_ID as string,
+                                    currency: 'EUR',
+                                }}
+                            >
+                                <BuyButton item={item} />
+                            </PayPalScriptProvider>
                         </Description>
                     </ContentWrapperProduct>
                 </ContentWrapper>

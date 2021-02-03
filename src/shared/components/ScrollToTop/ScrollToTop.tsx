@@ -26,10 +26,12 @@ const ScrollToTop: React.FC = () => {
 
     useLayoutEffect(() => {
         window.addEventListener('scroll', () => {
-            if (window.scrollY >= 500) {
-                scrollerRef.current!.classList.add('visible');
-            } else {
-                scrollerRef.current!.classList.remove('visible');
+            if (scrollerRef.current) {
+                if (window.scrollY >= 500) {
+                    scrollerRef.current.classList.add('visible');
+                } else {
+                    scrollerRef.current.classList.remove('visible');
+                }
             }
         });
     }, []);

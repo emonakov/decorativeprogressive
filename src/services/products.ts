@@ -61,7 +61,16 @@ export const createProduct = async (params: Partial<ItemInterface>, productId: s
         ...params,
         createdAt: new Date(),
         isNew: true,
+        inStock: true,
     });
+};
+
+export const boughtProduct = async (productId: string): Promise<void> => {
+    const productRef = db.collection('products').doc(productId);
+    await productRef.set({
+        inStock: false,
+        boughtOn: new Date(),
+    }, { merge: true });
 };
 
 export const deleteProductImage = (publicId: string): Promise<any> => axios.post('/api/destroy', { publicId });

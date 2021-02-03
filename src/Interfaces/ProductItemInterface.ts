@@ -1,8 +1,9 @@
 export interface ItemInterface {
-    id: number | string;
+    id: string;
     description: string;
     title: string;
     productAssets: string;
     images: string[];
     price: number;
+    inStock: boolean;
 }
