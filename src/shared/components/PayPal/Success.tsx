@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import countryCode from 'country-code-lookup';
 
 import { PaypalOrderInterface } from '../../../Interfaces/PaypalOrderInterface';
 
@@ -34,7 +35,7 @@ const Success: React.FC<{ data?: PaypalOrderInterface }> = ({ data }) => {
                 {address?.admin_area_1 && <li>{address.admin_area_1}</li>}
                 {address?.admin_area_2 && <li>{address.admin_area_2}</li>}
                 <li>{address?.postal_code}</li>
-                <li>{address?.country_code}</li>
+                <li>{address?.country_code && countryCode.byIso(address.country_code).country}</li>
             </List>
         </>
     );
