@@ -21,6 +21,8 @@ module.exports = {
     {
       files: ['**/*.ts?(x)'],
       rules: {
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': 'error',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         'import/no-named-as-default': 'off',
