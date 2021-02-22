@@ -23,8 +23,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm i
-    - run: npm test
+    - run: npx yarn
+    - run: npx yarn test
+    - run: npx yarn ts:check
+    - run: npx yarn eslint
   # This workflow contains a single job called "build"
   build:
     needs: test
