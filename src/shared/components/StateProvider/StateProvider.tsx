@@ -14,14 +14,14 @@ export interface StateInterface {
 interface ActionInterface {
     type: string;
     payload?: {
-        items?: ItemInterface[]
-        item?: ItemInterface
-        isAuthenticated?: boolean
-    }
-    error?: string
+        items?: ItemInterface[];
+        item?: ItemInterface;
+        isAuthenticated?: boolean;
+    };
+    error?: string;
 }
 
-export type Dispatch = (action: ActionInterface) => void
+export type Dispatch = (action: ActionInterface) => void;
 
 interface ProviderProps {
     isAuthenticated?: boolean;
@@ -29,11 +29,7 @@ interface ProviderProps {
 
 const StateContext = createContext<any | undefined>(undefined);
 
-const stateReducer = (state: StateInterface, {
-    payload,
-    type,
-    error,
-}: ActionInterface) => {
+const stateReducer = (state: StateInterface, { payload, type, error }: ActionInterface) => {
     switch (type) {
         case 'update': {
             return { ...state, ...payload };
@@ -69,18 +65,11 @@ const initialState = {
 const StateProvider: React.FC<ProviderProps> = ({ children }) => {
     const reducer = useReducer(stateReducer, initialState);
 
-    return (
-        <StateContext.Provider value={reducer}>
-            {children}
-        </StateContext.Provider>
-    );
+    return <StateContext.Provider value={reducer}>{children}</StateContext.Provider>;
 };
 
 const useContextState = (): [StateInterface, Dispatch] => {
     const state = useContext(StateContext);
-    if (state === undefined) {
-        throw new Error('useContextState must be used within a Provider');
-    }
 
     return state;
 };
