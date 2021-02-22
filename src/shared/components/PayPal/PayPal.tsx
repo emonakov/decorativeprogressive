@@ -37,7 +37,7 @@ const BuyButton: React.FC<{ item: ItemInterface }> = ({
                 <PayPalButtons
                     fundingSource={FUNDING.PAYPAL}
                     onApprove={(data, actions) => actions
-                        .order.capture({ test: 'test' })
+                        .order.capture()
                         .then((details) => {
                             const orderDetails = { ...details } as unknown as PaypalOrderInterface;
                             setOrderData(orderDetails);

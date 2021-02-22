@@ -48,6 +48,7 @@ module.exports = {
         'no-undef': 'off',
         'react-hooks/exhaustive-deps': 'off',
         'import/no-duplicates': 'off',
+        'react/react-in-jsx-scope': 'off',
       },
     },
   ],
