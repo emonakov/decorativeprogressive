@@ -12,7 +12,7 @@ import './shared/libs/FontAwesomeLib';
 import { theme } from './config';
 
 import PageWrapper from './shared/components/PageWrapper';
-import Menubar from './components/Menubar';
+// import Menubar from './components/Menubar';
 import ScrollToTop from './shared/components/ScrollToTop';
 import Fallback from './components/Fallback';
 
@@ -71,7 +71,7 @@ const App: React.FC = () => {
                     <PageWrapper>
                         <Router>
                             <Suspense fallback={<Fallback />}>
-                                <Menubar />
+                                {/* <Menubar /> */}
                                 {!isLoading && (
                                     <>
                                         {!isAuthenticated && <UnauthenticatedRoutes />}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { HomePageHero } from '../Heroes';
-import About from '../About';
+// import About from '../About';
 
 const HomePage: React.FC = () => (
     <>
@@ -14,7 +14,7 @@ const HomePage: React.FC = () => (
                 <a href="http://www.change.org/NetVoyne">petition</a>
             </h1>
         </HomePageHero>
-        <About />
+        {/* <About /> */}
     </>
 );
 
